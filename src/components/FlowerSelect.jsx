@@ -13,9 +13,10 @@ export default function FlowerSelect({someListOfFlowers}) {
     setFlower(event.target.value);
   };
 
+
   return (
-    <Box sx={{ minWidth: 120, display: "flex", justifyContent: "center"}}>
-      <FormControl >
+    <Box sx={{ display: "flex", justifyContent: "center"}}>
+      <FormControl sx={{minWidth: 120}} >
         <InputLabel id="demo-simple-select-label">Flower</InputLabel>
         <Select
           labelId="demo-simple-select-label"
@@ -24,9 +25,9 @@ export default function FlowerSelect({someListOfFlowers}) {
           label="Flower"
           onChange={handleChange}
         >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          {someListOfFlowers.map((flower, index) => {
+            return <MenuItem key={index} value={flower}>{flower}</MenuItem>
+          })}
         </Select>
       </FormControl>
     </Box>
