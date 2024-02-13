@@ -20,7 +20,7 @@ export default function BouquetSize({ bouquetSize, setBouquetSize }) {
                 <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
-                    value={bouquetSize ? bouquetSize : ''}
+                    value={bouquetSize}
                     label="Bouquet Size"
                     onChange={handleChange}
                 >
