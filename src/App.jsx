@@ -3,11 +3,13 @@ import logo from './logo.svg';
 import './App.css';
 import Container from '@mui/material/Container';
 import FlowerSelect from './components/FlowerSelect';
-import BouquetSize from './components/BouquetSize';
+import BouquetSizeSelector from './components/BouquetSize';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
   const [count, setCount] = useState(0);
   const [bouquetSize, setBouquetSize] = useState('Medium');
+  const [selectedFlowerType, setSelectedFlowerType] = useState('');
   let focalFlowers = [];
   let fillerFlowers = [];
   let folliageFlowers = [];
@@ -30,14 +32,24 @@ const App = () => {
     }
   }
 
-
   return (
     <div className="App">
-      <header className="App-header">
-        
-        <p>Hi</p>
-      </header>
-      <BouquetSize bouquetSize={bouquetSize} setBouquetSize={setBouquetSize} />
+
+      <h1>Bloomcrafter</h1>
+      {/* you can delete this... this is just temporary */}
+      <div className="flower-types-container">
+        <div className="select-focal">
+          <h2>Focal</h2>
+        </div>
+        <div className="select-filler">
+          <h2>Filler</h2>
+        </div>
+        <div className="select-foliage">
+          <h2>Foliage</h2>
+        </div>
+      </div>
+
+      <BouquetSizeSelector bouquetSizeSelection={bouquetSize} setBouquetSize={setBouquetSize} />
 
       {bouquetSize && <p>Focal</p>}
       <div style={{display: "flex", justifyContent: "center"}}>
