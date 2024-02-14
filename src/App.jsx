@@ -7,6 +7,7 @@ import BouquetSizeSelector from './components/BouquetSize';
 import FlowerTypeButton from './components/FlowerTypeButton';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import dummyData from './components/dummyData';
 
 const App = () => {
   const [bouquetSize, setBouquetSize] = useState('Medium');
@@ -137,7 +138,10 @@ const App = () => {
       </>
       } 
       </div>
-      
+      {console.log(dummyData)}
+      {/* todo: flowershop component (name WIP) needs to get a filtered list of data (based on type of flower (foliage,focal etc)), then needs to access fields like 
+      price and stuff */}
+      {/* <FlowerShop flowerList={dummyData} /> */}
       {/* <FlowerSelect someListOfFlowers={["Rose", "Daisy", "Tulip", "Sunflower"]} /> */}
       
     </div>
