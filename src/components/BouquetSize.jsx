@@ -1,34 +1,42 @@
-import React, { useState } from 'react';
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import FlowerSelect from './FlowerSelect';
-// import Container from '@mui/material/Container'
+// could use some tidying up, but it works
+const bouquetSizes = {
+    Small: "Small",
+    Medium: "Medium",
+    Large: "Large",
+  };
 
-export default function BouquetSize({ bouquetSize, setBouquetSize }) {
+const BouquetSizeButton = ({ bouquetSize, bouquetSizeSelection, setBouquetSize }) => (
+<div className="BouquetSizeButton">
+    <input
+    type="radio"
+    id={bouquetSize}
+    className="btn-check"
+    checked={bouquetSize === bouquetSizeSelection}
+    autoComplete="off"
+    onChange={() => setBouquetSize(bouquetSize)}
+    />
+    <label
+    className="btn btn-outline-dark btn-lg m-1 p-2"
+    htmlFor={bouquetSize}
+    style={{ width: "150px", textAlign: "center" }}
+    data-cy={bouquetSize}
+    >
+    {bouquetSize}
+    </label>
+</div>
+);
 
-    const handleChange = (event) => {
-        setBouquetSize(event.target.value);
-    };
+const BouquetSizeSelector = ({ bouquetSizeSelection, setBouquetSize }) => (
+<div className="d-flex btn-group justify-content-center align-items-center m-2">
+    {Object.keys(bouquetSizes).map((bouquetSize) => (
+    <BouquetSizeButton
+        key={bouquetSize}
+        bouquetSize={bouquetSize}
+        bouquetSizeSelection={bouquetSizeSelection}
+        setBouquetSize={setBouquetSize}
+    />
+    ))}
+</div>
+);
 
-    return (
-        <Box sx={{ display: "flex", justifyContent: "center" }}>
-            <FormControl sx={{ minWidth: 140 }} >
-                <InputLabel id="demo-simple-select-label">Bouquet Size</InputLabel>
-                <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={bouquetSize}
-                    label="Bouquet Size"
-                    onChange={handleChange}
-                >
-                    <MenuItem value={"Small"}>Small</MenuItem>
-                    <MenuItem value={"Medium"}>Medium</MenuItem>
-                    <MenuItem value={"Large"}>Large</MenuItem>
-                </Select>
-            </FormControl>
-        </Box>
-    );
-}
+export default BouquetSizeSelector;
