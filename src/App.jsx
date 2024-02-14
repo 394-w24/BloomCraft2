@@ -4,10 +4,11 @@ import './App.css';
 import Container from '@mui/material/Container';
 import FlowerSelect from './components/FlowerSelect';
 import BouquetSizeSelector from './components/BouquetSize';
+import FlowerTypeButton from './components/FlowerTypeButton';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 const App = () => {
-  const [count, setCount] = useState(0);
   const [bouquetSize, setBouquetSize] = useState('Medium');
   const [selectedFlowerType, setSelectedFlowerType] = useState('');
   let focalFlowers = [];
@@ -37,7 +38,7 @@ const App = () => {
 
       <h1>Bloomcrafter</h1>
       {/* you can delete this... this is just temporary */}
-      <div className="flower-types-container">
+      <div className="flower-types-container" style={{outline: "1px solid black", maxWidth: "50%", justifyContent: "center"}}>
         <div className="select-focal">
           <h2>Focal</h2>
         </div>
@@ -50,6 +51,10 @@ const App = () => {
       </div>
 
       <BouquetSizeSelector bouquetSizeSelection={bouquetSize} setBouquetSize={setBouquetSize} />
+
+      <FlowerTypeButton flowerType={selectedFlowerType} setFlowerType={setSelectedFlowerType} value="filler" />
+      <FlowerTypeButton flowerType={selectedFlowerType} setFlowerType={setSelectedFlowerType} value="focal" />
+      <FlowerTypeButton flowerType={selectedFlowerType} setFlowerType={setSelectedFlowerType} value="foliage" />
 
       {bouquetSize && <p>Focal</p>}
       <div style={{display: "flex", justifyContent: "center"}}>
