@@ -8,6 +8,7 @@ import FlowerTypeButton from './components/FlowerTypeButton';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import dummyData from './components/dummyData';
+import FlowerShop from './components/FlowerShop';
 
 const App = () => {
   const [bouquetSize, setBouquetSize] = useState('Medium');
@@ -56,6 +57,8 @@ const App = () => {
       <FlowerTypeButton flowerType={selectedFlowerType} setFlowerType={setSelectedFlowerType} value="filler" />
       <FlowerTypeButton flowerType={selectedFlowerType} setFlowerType={setSelectedFlowerType} value="focal" />
       <FlowerTypeButton flowerType={selectedFlowerType} setFlowerType={setSelectedFlowerType} value="foliage" />
+
+      <h3>{selectedFlowerType ? `Selected: ${selectedFlowerType} flowers ` : `Please select a flower type.`}</h3>
 
       {bouquetSize && <p>Focal</p>}
       <div style={{display: "flex", justifyContent: "center"}}>
@@ -141,7 +144,7 @@ const App = () => {
       {console.log(dummyData)}
       {/* todo: flowershop component (name WIP) needs to get a filtered list of data (based on type of flower (foliage,focal etc)), then needs to access fields like 
       price and stuff */}
-      {/* <FlowerShop flowerList={dummyData} /> */}
+      <FlowerShop flowerList={dummyData} />
       {/* <FlowerSelect someListOfFlowers={["Rose", "Daisy", "Tulip", "Sunflower"]} /> */}
       
     </div>

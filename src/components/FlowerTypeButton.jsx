@@ -7,7 +7,7 @@ const FlowerTypeButton = ({ flowerType, setFlowerType, value }) => {
 
   return (
       <i onClick={handleClick}
-      class={flowerType === value ? "bi bi-plus-circle" : "bi bi-plus-circle-fill"}
+      className={flowerType === value ? "bi bi-plus-circle-fill" : "bi bi-plus-circle"}
       style={{cursor: "pointer", fontSize: value === "focal" ? "3rem" : "2rem"}}></i>
   );
 };
