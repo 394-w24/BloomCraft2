@@ -19,23 +19,26 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import dummyData from './components/dummyData';
 import FlowerShop from './components/FlowerShop';
 import Cart from './components/Cart';
+import FinalCart from './components/FinalCart';
+
 const App = () => {
-  const [selectedFlowerType, setSelectedFlowerType] = useState('focal');
+  const [selectedFlowerType, setSelectedFlowerType] = useState('Focal');
   const [focalFlowers, setFocalFlowers] = useState([]);
   const [fillerFlowers, setFillerFlowers] = useState([]);
   const [foliageFlowers, setFoliageFlowers] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
-  
+  const [cartView, setCartView] = useState(false);
+
   const calculatePrice = () => {
     let sum = 0;
     focalFlowers.forEach(flower => {
-      sum += flower.price*flower.quantity;
+      sum += flower.price * flower.quantity;
     });
     fillerFlowers.forEach(flower => {
-      sum += flower.price*flower.quantity;
+      sum += flower.price * flower.quantity;
     });
     foliageFlowers.forEach(flower => {
-      sum += flower.price*flower.quantity;
+      sum += flower.price * flower.quantity;
     });
     setTotalPrice(sum);
     console.log(totalPrice);
@@ -62,38 +65,51 @@ const App = () => {
             <div style={{ margin: '0 auto' }}>
               <img src={logo} alt="Logo" className="App-logo" />
             </div>
-            <IconButton color="inherit" aria-label="cart">
-              <ShoppingCartIcon />
+            <IconButton color="inherit" aria-label="cart" onClick={() => setCartView(!cartView)}>
+              <ShoppingCartIcon style={{ scale: '1.5' }} />
             </IconButton>
           </Toolbar>
         </AppBar>
 
         {/* <BouquetSizeSelector bouquetSizeSelection={bouquetSize} setBouquetSize={setBouquetSize} /> */}
+        {cartView ?
+          <>
+            <ArrowBackIcon style={{ left: '10', top: '10vh', position: 'absolute', scale: '1.5' }}
+              onClick={() => setCartView(false)} />
+            <FinalCart focalFlowers={focalFlowers} fillerFlowers={fillerFlowers} foliageFlowers={foliageFlowers} />
+            <b style={{ fontSize: "1.5rem" }}>{`Total Price: $${totalPrice}.00`}</b>
+          </> :
+          <>
+            <FlowerTypeButton flowerType={selectedFlowerType} setFlowerType={setSelectedFlowerType} value="Filler" />
+            <FlowerTypeButton flowerType={selectedFlowerType} setFlowerType={setSelectedFlowerType} value="Focal" />
+            <FlowerTypeButton flowerType={selectedFlowerType} setFlowerType={setSelectedFlowerType} value="Foliage" />
 
-        <FlowerTypeButton flowerType={selectedFlowerType} setFlowerType={setSelectedFlowerType} value="filler" />
-        <FlowerTypeButton flowerType={selectedFlowerType} setFlowerType={setSelectedFlowerType} value="focal" />
-        <FlowerTypeButton flowerType={selectedFlowerType} setFlowerType={setSelectedFlowerType} value="foliage" />
+            <h3>{`${selectedFlowerType} Flowers `}</h3>
+            <Cart list={selectedFlowerType === 'Focal' ? focalFlowers : selectedFlowerType === 'Filler' ? fillerFlowers : foliageFlowers} />
+            <b>{`Total Price: $${totalPrice}.00`}</b>
 
-        <h3>{`Selected: ${selectedFlowerType} flowers `}</h3>
-        <Cart list={focalFlowers.concat(fillerFlowers).concat(foliageFlowers)} />
-        <div style={{ backgroundColor: '#DAF7A6' }}>
-          {/* {console.log(dummyData)} */}
-          {/* todo: flowershop component (name WIP) needs to get a filtered list of data (based on type of flower (foliage,focal etc)), then needs to access fields like 
+            <div style={{ backgroundColor: '#DAF7A6' }}>
+              {/* {console.log(dummyData)} */}
+              {/* todo: flowershop component (name WIP) needs to get a filtered list of data (based on type of flower (foliage,focal etc)), then needs to access fields like 
       price and stuff */}
-        
-          <FlowerShop flowerList={dummyData}
-            typeList={selectedFlowerType === 'focal' ? focalFlowers
-              : selectedFlowerType === 'filler' ? fillerFlowers
-                : foliageFlowers}
-            setTypeList={selectedFlowerType === 'focal' ? setFocalFlowers
-              : selectedFlowerType === 'filler' ? setFillerFlowers
-                : setFoliageFlowers
-              }
-            calculatePrice={calculatePrice}
-          />
-        
-        </div>
+
+              <FlowerShop flowerList={dummyData}
+                selectedFlowerType={selectedFlowerType}
+                typeList={selectedFlowerType === 'Focal' ? focalFlowers
+                  : selectedFlowerType === 'Filler' ? fillerFlowers
+                    : foliageFlowers}
+                setTypeList={selectedFlowerType === 'Focal' ? setFocalFlowers
+                  : selectedFlowerType === 'Filler' ? setFillerFlowers
+                    : setFoliageFlowers
+                }
+                calculatePrice={calculatePrice}
+              />
+            </div>
+
+          </>}
+
       </div>
+
     </ThemeProvider>
   );
 }

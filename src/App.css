@@ -35,3 +35,9 @@
   color: #d8a420;
 }
 
+.cart-items {
+  text-align: left;
+  width: 350px;
+  left: 50vw;
+  position: sticky;
+}

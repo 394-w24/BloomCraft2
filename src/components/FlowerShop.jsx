@@ -1,9 +1,9 @@
 import FlowerShopItem from "./FlowerShopItem";
 import './FlowerShop.css';
-const FlowerShop = ({ flowerList, typeList, setTypeList, calculatePrice }) => {
+const FlowerShop = ({ flowerList, selectedFlowerType, typeList, setTypeList, calculatePrice }) => {
   return (
     <div className="flower-shop-grid">
-      {flowerList.map((flower, index) => (
+      {flowerList.filter((flower) => flower.category === selectedFlowerType).map((flower, index) => (
         <FlowerShopItem key={index} flower={flower}
           flowerTypeList={typeList} setFlowerTypeList={setTypeList} calculatePrice={calculatePrice}/>
       ))}
