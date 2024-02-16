@@ -21,28 +21,11 @@ import FlowerShop from './components/FlowerShop';
 
 const App = () => {
   const [bouquetSize, setBouquetSize] = useState('Medium');
-  const [selectedFlowerType, setSelectedFlowerType] = useState('');
-  let focalFlowers = [];
-  let fillerFlowers = [];
-  let folliageFlowers = [];
+  const [selectedFlowerType, setSelectedFlowerType] = useState('focal');
+  const [focalFlowers, setFocalFlowers] = useState([]);
+  const [fillerFlowers, setFillerFlowers] = useState([]);
+  const [folliageFlowers, setFolliageFlowers] = useState([]);
 
-  const focalNumber = (num) => {
-    for (let i = 0; i < num; i++) {
-      focalFlowers.push(<FlowerSelect someListOfFlowers={["Red Rose", "Tulip", "Sunflower"]} />)
-    }
-  }
-
-  const fillerNumber = (num) => {
-    for (let i = 0; i < num; i++) {
-      fillerFlowers.push(<FlowerSelect someListOfFlowers={["Baby's Breath", "Daisy", "Strawflower"]} />)
-    }
-  }
-
-  const folliageNumber = (num) => {
-    for (let i = 0; i < num; i++) {
-      folliageFlowers.push(<FlowerSelect someListOfFlowers={["Eucalyptus", "Leather leaf", "Ivy"]} />)
-    }
-  }
 
   const theme = createTheme({
     palette: {
@@ -54,26 +37,26 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-    <div className="App">
+      <div className="App">
 
-      <AppBar position="static" style={{ backgroundColor: 'mustard !important' }}>
-        <Toolbar>
-          <IconButton edge="start" color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
-          <div style={{ margin: '0 auto' }}>
-            <img src={logo} alt="Logo" className="App-logo" />
-          </div>
-          <IconButton color="inherit" aria-label="cart">
-            <ShoppingCartIcon />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
+        <AppBar position="static" style={{ backgroundColor: 'mustard !important' }}>
+          <Toolbar>
+            <IconButton edge="start" color="inherit" aria-label="menu">
+              <MenuIcon />
+            </IconButton>
+            <div style={{ margin: '0 auto' }}>
+              <img src={logo} alt="Logo" className="App-logo" />
+            </div>
+            <IconButton color="inherit" aria-label="cart">
+              <ShoppingCartIcon />
+            </IconButton>
+          </Toolbar>
+        </AppBar>
 
-{/* 
+        {/* 
       <h1>Bloomcrafter</h1>
       you can delete this... this is just temporary */}
-      <div className="flower-types-container" style={{outline: "1px solid black", maxWidth: "50%", justifyContent: "center"}}>
+        {/* <div className="flower-types-container" style={{outline: "1px solid black", maxWidth: "50%", justifyContent: "center"}}>
         <div className="select-focal">
           <h2>Focal</h2>
         </div>
@@ -83,17 +66,17 @@ const App = () => {
         <div className="select-foliage">
           <h2>Foliage</h2>
         </div>
-      </div>
+      </div> */}
 
-      <BouquetSizeSelector bouquetSizeSelection={bouquetSize} setBouquetSize={setBouquetSize} />
+        {/* <BouquetSizeSelector bouquetSizeSelection={bouquetSize} setBouquetSize={setBouquetSize} /> */}
 
-      <FlowerTypeButton flowerType={selectedFlowerType} setFlowerType={setSelectedFlowerType} value="filler" />
-      <FlowerTypeButton flowerType={selectedFlowerType} setFlowerType={setSelectedFlowerType} value="focal" />
-      <FlowerTypeButton flowerType={selectedFlowerType} setFlowerType={setSelectedFlowerType} value="foliage" />
+        <FlowerTypeButton flowerType={selectedFlowerType} setFlowerType={setSelectedFlowerType} value="filler" />
+        <FlowerTypeButton flowerType={selectedFlowerType} setFlowerType={setSelectedFlowerType} value="focal" />
+        <FlowerTypeButton flowerType={selectedFlowerType} setFlowerType={setSelectedFlowerType} value="foliage" />
 
-      <h3>{selectedFlowerType ? `Selected: ${selectedFlowerType} flowers ` : `Please select a flower type.`}</h3>
+        <h3>{`Selected: ${selectedFlowerType} flowers `}</h3>
 
-      {bouquetSize && <p>Focal</p>}
+        {/* {bouquetSize && <p>Focal</p>}
       <div style={{display: "flex", justifyContent: "center"}}>
       {bouquetSize === "Small" &&
       <>
@@ -185,16 +168,22 @@ const App = () => {
           <ArrowForwardIcon />
           <span>Next</span>
         </div>
-      </div>
-   <div style={{ backgroundColor: '#DAF7A6'}}>
-      {console.log(dummyData)}
-      {/* todo: flowershop component (name WIP) needs to get a filtered list of data (based on type of flower (foliage,focal etc)), then needs to access fields like 
+      </div>  */}
+        <div style={{ backgroundColor: '#DAF7A6' }}>
+          {console.log(dummyData)}
+          {/* todo: flowershop component (name WIP) needs to get a filtered list of data (based on type of flower (foliage,focal etc)), then needs to access fields like 
       price and stuff */}
-      <FlowerShop flowerList={dummyData} />
-      {/* <FlowerSelect someListOfFlowers={["Rose", "Daisy", "Tulip", "Sunflower"]} /> */}
-    </div>
-  </div>
-  </ThemeProvider>
+          <FlowerShop flowerList={dummyData}
+            typeList={selectedFlowerType === 'focal' ? focalFlowers
+              : selectedFlowerType === 'filler' ? fillerFlowers
+                : folliageFlowers}
+            setTypeList={selectedFlowerType === 'focal' ? setFocalFlowers
+              : selectedFlowerType === 'filler' ? setFillerFlowers
+                : setFolliageFlowers}
+          />
+        </div>
+      </div>
+    </ThemeProvider>
   );
 }
 
