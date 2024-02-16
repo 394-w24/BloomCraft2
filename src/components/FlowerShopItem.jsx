@@ -1,4 +1,4 @@
-const FlowerShopItem = ({ flower, flowerTypeList, setFlowerTypeList }) => {
+const FlowerShopItem = ({ flower, flowerTypeList, setFlowerTypeList, calculatePrice}) => {
   // Determine the icon based on the flower's category
   let iconClassName;
   switch (flower.category) {
@@ -24,15 +24,17 @@ const FlowerShopItem = ({ flower, flowerTypeList, setFlowerTypeList }) => {
             flowerType.quantity += 1;
           }
         });
-        setFlowerTypeList([...flowerTypeList]);
+        // setFlowerTypeList([...flowerTypeList]);
       } else {
         flower.quantity = 1;
         setFlowerTypeList([...flowerTypeList, flower]);
       }
+      console.log(flowerTypeList);
+      calculatePrice();
     }}>
       <i className={iconClassName} style={{ fontSize: "3rem" }}></i>
       <p>{flower.name}</p>
-      <p>{flower.price}</p>
+      <p>${flower.price}.00</p>
     </div>
   );
 };

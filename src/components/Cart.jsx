@@ -6,9 +6,8 @@ const Cart = ({ list }) => {
       <ul>
         {list.map((item, index) => (
           <li key={index}>
-            <span>{item.name}</span>
-            <span>{item.price}</span>
-            <span>{item.quantity}</span>
+            <span>{item.name} ({item.quantity})</span>
+            {/* <span>{item.price}</span> */}
           </li>
         ))}
       </ul>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { AppBar, Toolbar, Typography, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -18,13 +18,28 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import dummyData from './components/dummyData';
 import FlowerShop from './components/FlowerShop';
-
+import Cart from './components/Cart';
 const App = () => {
-  const [bouquetSize, setBouquetSize] = useState('Medium');
   const [selectedFlowerType, setSelectedFlowerType] = useState('focal');
   const [focalFlowers, setFocalFlowers] = useState([]);
   const [fillerFlowers, setFillerFlowers] = useState([]);
-  const [folliageFlowers, setFolliageFlowers] = useState([]);
+  const [foliageFlowers, setFoliageFlowers] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+  
+  const calculatePrice = () => {
+    let sum = 0;
+    focalFlowers.forEach(flower => {
+      sum += flower.price*flower.quantity;
+    });
+    fillerFlowers.forEach(flower => {
+      sum += flower.price*flower.quantity;
+    });
+    foliageFlowers.forEach(flower => {
+      sum += flower.price*flower.quantity;
+    });
+    setTotalPrice(sum);
+    console.log(totalPrice);
+  }
 
 
   const theme = createTheme({
@@ -53,21 +68,6 @@ const App = () => {
           </Toolbar>
         </AppBar>
 
-        {/* 
-      <h1>Bloomcrafter</h1>
-      you can delete this... this is just temporary */}
-        {/* <div className="flower-types-container" style={{outline: "1px solid black", maxWidth: "50%", justifyContent: "center"}}>
-        <div className="select-focal">
-          <h2>Focal</h2>
-        </div>
-        <div className="select-filler">
-          <h2>Filler</h2>
-        </div>
-        <div className="select-foliage">
-          <h2>Foliage</h2>
-        </div>
-      </div> */}
-
         {/* <BouquetSizeSelector bouquetSizeSelection={bouquetSize} setBouquetSize={setBouquetSize} /> */}
 
         <FlowerTypeButton flowerType={selectedFlowerType} setFlowerType={setSelectedFlowerType} value="filler" />
@@ -75,112 +75,23 @@ const App = () => {
         <FlowerTypeButton flowerType={selectedFlowerType} setFlowerType={setSelectedFlowerType} value="foliage" />
 
         <h3>{`Selected: ${selectedFlowerType} flowers `}</h3>
-
-        {/* {bouquetSize && <p>Focal</p>}
-      <div style={{display: "flex", justifyContent: "center"}}>
-      {bouquetSize === "Small" &&
-      <>
-        {focalNumber(3)}
-        {focalFlowers.map((flower, index) => {
-          return <div key={index}>{flower}</div>
-        })}
-      </>
-      }
-     
-
-      {bouquetSize === "Medium" &&
-      <>
-        {focalNumber(6)}
-        {focalFlowers.map((flower, index) => {
-          return <div key={index}>{flower}</div>
-        })}
-      </>
-      }
-
-      {bouquetSize === "Large" &&
-      <>
-        {focalNumber(9)}
-        {focalFlowers.map((flower, index) => {
-          return <div key={index}>{flower}</div>
-        })}
-      </>
-      }
-      </div>
-
-      {bouquetSize && <p>Filler</p>}
-      <div style={{display: "flex", justifyContent: "center"}}>
-      {bouquetSize === "Small" &&
-      <>
-        {fillerNumber(2)}
-        {fillerFlowers.map((flower, index) => {
-          return <div key={index}>{flower}</div>
-        })}
-
-      </>
-      }
-
-      {bouquetSize === "Medium" &&
-      <>
-        {fillerNumber(4)}
-        {fillerFlowers.map((flower, index) => {
-          return <div key={index}>{flower}</div>
-        })}
-      </>
-      }
-
-      {bouquetSize === "Large" &&
-      <>
-        {fillerNumber(6)}
-        {fillerFlowers.map((flower, index) => {
-          return <div key={index}>{flower}</div>
-        })}
-      </>
-      }
-      </div>
-
-      {bouquetSize !== "Small" && <p>Foliage</p>}
-      <div style={{display: "flex", justifyContent: "center"}}>
-      {bouquetSize === "Medium" &&
-      <>
-        {folliageNumber(1)}
-        {folliageFlowers.map((flower, index) => {
-          return <div key={index}>{flower}</div>
-        })}
-      </>
-      }
-
-      {bouquetSize === "Large" &&
-      <>
-        {folliageNumber(2)}
-        {folliageFlowers.map((flower, index) => {
-          return <div key={index}>{flower}</div>
-        })}
-      </>
-      } 
-      </div>
-
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <div>
-          <ArrowBackIcon />
-          <span>Back</span>
-        </div>
-        <div>
-          <ArrowForwardIcon />
-          <span>Next</span>
-        </div>
-      </div>  */}
+        <Cart list={focalFlowers.concat(fillerFlowers).concat(foliageFlowers)} />
         <div style={{ backgroundColor: '#DAF7A6' }}>
-          {console.log(dummyData)}
+          {/* {console.log(dummyData)} */}
           {/* todo: flowershop component (name WIP) needs to get a filtered list of data (based on type of flower (foliage,focal etc)), then needs to access fields like 
       price and stuff */}
+        
           <FlowerShop flowerList={dummyData}
             typeList={selectedFlowerType === 'focal' ? focalFlowers
               : selectedFlowerType === 'filler' ? fillerFlowers
-                : folliageFlowers}
+                : foliageFlowers}
             setTypeList={selectedFlowerType === 'focal' ? setFocalFlowers
               : selectedFlowerType === 'filler' ? setFillerFlowers
-                : setFolliageFlowers}
+                : setFoliageFlowers
+              }
+            calculatePrice={calculatePrice}
           />
+        
         </div>
       </div>
     </ThemeProvider>
