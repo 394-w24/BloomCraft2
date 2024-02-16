@@ -7,7 +7,7 @@ const dummyData =
       "price": "$2.00",
       "currency": "$",
       "image_link": "https://drive.google.com/file/d/1L8q27NWjpAFtgOKDi5FdsMCrLEFoAJkn/view?usp=drive_link",
-      "color": "White"
+      "color": "white"
     },
     {
       "name": "Spray Carnations",

@@ -1,5 +1,14 @@
 import { useState } from 'react';
-import logo from './logo.svg';
+
+import { AppBar, Toolbar, Typography, IconButton } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+
+
+import logo from './logo.png';
 import './App.css';
 import Container from '@mui/material/Container';
 import FlowerSelect from './components/FlowerSelect';
@@ -35,11 +44,35 @@ const App = () => {
     }
   }
 
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#FFDB58', // Mustard color
+      },
+    },
+  });
+
   return (
+    <ThemeProvider theme={theme}>
     <div className="App">
 
+      <AppBar position="static" style={{ backgroundColor: 'mustard !important' }}>
+        <Toolbar>
+          <IconButton edge="start" color="inherit" aria-label="menu">
+            <MenuIcon />
+          </IconButton>
+          <div style={{ margin: '0 auto' }}>
+            <img src={logo} alt="Logo" className="App-logo" />
+          </div>
+          <IconButton color="inherit" aria-label="cart">
+            <ShoppingCartIcon />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+
+{/* 
       <h1>Bloomcrafter</h1>
-      {/* you can delete this... this is just temporary */}
+      you can delete this... this is just temporary */}
       <div className="flower-types-container" style={{outline: "1px solid black", maxWidth: "50%", justifyContent: "center"}}>
         <div className="select-focal">
           <h2>Focal</h2>
@@ -70,6 +103,7 @@ const App = () => {
         })}
       </>
       }
+     
 
       {bouquetSize === "Medium" &&
       <>
@@ -141,14 +175,27 @@ const App = () => {
       </>
       } 
       </div>
+
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <div>
+          <ArrowBackIcon />
+          <span>Back</span>
+        </div>
+        <div>
+          <ArrowForwardIcon />
+          <span>Next</span>
+        </div>
+      </div>
+   <div style={{ backgroundColor: '#DAF7A6'}}>
       {console.log(dummyData)}
       {/* todo: flowershop component (name WIP) needs to get a filtered list of data (based on type of flower (foliage,focal etc)), then needs to access fields like 
       price and stuff */}
       <FlowerShop flowerList={dummyData} />
       {/* <FlowerSelect someListOfFlowers={["Rose", "Daisy", "Tulip", "Sunflower"]} /> */}
-      
     </div>
+  </div>
+  </ThemeProvider>
   );
-};
+}
 
 export default App;
