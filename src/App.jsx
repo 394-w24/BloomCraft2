@@ -48,18 +48,33 @@ const App = () => {
     if (selectedFlowerType === 'Focal') {
       const updatedFlowers = [...focalFlowers];
       updatedFlowers[index].quantity = newQuantity;
-      setFocalFlowers(updatedFlowers);
+      if (newQuantity === 0) {
+        const filteredFlowers = updatedFlowers.filter((flower, i) => i !== index);
+        setFocalFlowers(filteredFlowers);
+      } else {
+        setFocalFlowers(updatedFlowers);
+      }
     } else if (selectedFlowerType === 'Filler') {
       const updatedFlowers = [...fillerFlowers];
       updatedFlowers[index].quantity = newQuantity;
-      setFillerFlowers(updatedFlowers);
+      if (newQuantity === 0) {
+        const filteredFlowers = updatedFlowers.filter((flower, i) => i !== index);
+        setFillerFlowers(filteredFlowers);
+      } else {
+        setFillerFlowers(updatedFlowers);
+      }
     } else {
       const updatedFlowers = [...foliageFlowers];
       updatedFlowers[index].quantity = newQuantity;
-      setFoliageFlowers(updatedFlowers);
+      if (newQuantity === 0) {
+        const filteredFlowers = updatedFlowers.filter((flower, i) => i !== index);
+        setFoliageFlowers(filteredFlowers);
+      } else {
+        setFoliageFlowers(updatedFlowers);
+      }
     }
-    // calculatePrice();
   }
+  
 
   useEffect(() => {
     calculatePrice();
@@ -101,13 +116,18 @@ const App = () => {
             <b style={{ fontSize: "1.5rem" }}>{`Total Price: $${totalPrice}.00`}</b>
           </> :
           <>
-            <FlowerTypeButton flowerType={selectedFlowerType} setFlowerType={setSelectedFlowerType} value="Filler" />
-            <FlowerTypeButton flowerType={selectedFlowerType} setFlowerType={setSelectedFlowerType} value="Focal" />
-            <FlowerTypeButton flowerType={selectedFlowerType} setFlowerType={setSelectedFlowerType} value="Foliage" />
-
+            <div className="flower-type-button-container" style={{display: "flex", justifyContent: "center", alignItems: "center" }}>
+              <FlowerTypeButton flowerType={selectedFlowerType} setFlowerType={setSelectedFlowerType} value="Filler" />
+              <FlowerTypeButton flowerType={selectedFlowerType} setFlowerType={setSelectedFlowerType} value="Focal" />
+              <FlowerTypeButton flowerType={selectedFlowerType} setFlowerType={setSelectedFlowerType} value="Foliage" />
+            </div>
             <h3>{`${selectedFlowerType} Flowers `}</h3>
             <Cart list={selectedFlowerType === 'Focal' ? focalFlowers : selectedFlowerType === 'Filler' ? fillerFlowers : foliageFlowers} updateQuantity={updateQuantity} />
             <b>{`Total Price: $${totalPrice}.00`}</b>
+
+            <IconButton color="inherit" aria-label="cart" onClick={() => setCartView(!cartView)}>
+              <ShoppingCartIcon style={{ scale: '1.5' }} /> Check out
+            </IconButton>
 
             <div style={{ backgroundColor: '#DAF7A6' }}>
               {/* {console.log(dummyData)} */}

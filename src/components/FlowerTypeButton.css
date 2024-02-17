@@ -1,0 +1,23 @@
+.flower-type-button {
+    border-radius: 50%;
+    border: 2px solid black;
+    width: 54px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .flower-type-button:hover {
+    background-color: rgb(255, 247, 0);
+  }
+  
+  .flower-type-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .highlighted-button {
+    background-color: rgb(252, 186, 3);
+  }
