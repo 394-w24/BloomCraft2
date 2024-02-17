@@ -30,6 +30,7 @@ const FlowerShopItem = ({ flower, flowerTypeList, setFlowerTypeList, calculatePr
         setFlowerTypeList([...flowerTypeList, flower]);
       }
       console.log(flowerTypeList);
+      // for some reason, this breaks when calculatePrice is missing
       calculatePrice();
     }}>
       <i className={iconClassName} style={{ fontSize: "3rem" }}></i>

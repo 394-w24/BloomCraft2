@@ -44,6 +44,27 @@ const App = () => {
     console.log(totalPrice);
   }
 
+  const updateQuantity = (index, newQuantity) => {
+    if (selectedFlowerType === 'Focal') {
+      const updatedFlowers = [...focalFlowers];
+      updatedFlowers[index].quantity = newQuantity;
+      setFocalFlowers(updatedFlowers);
+    } else if (selectedFlowerType === 'Filler') {
+      const updatedFlowers = [...fillerFlowers];
+      updatedFlowers[index].quantity = newQuantity;
+      setFillerFlowers(updatedFlowers);
+    } else {
+      const updatedFlowers = [...foliageFlowers];
+      updatedFlowers[index].quantity = newQuantity;
+      setFoliageFlowers(updatedFlowers);
+    }
+    // calculatePrice();
+  }
+
+  useEffect(() => {
+    calculatePrice();
+  }, [focalFlowers, fillerFlowers, foliageFlowers]);
+
 
   const theme = createTheme({
     palette: {
@@ -85,7 +106,7 @@ const App = () => {
             <FlowerTypeButton flowerType={selectedFlowerType} setFlowerType={setSelectedFlowerType} value="Foliage" />
 
             <h3>{`${selectedFlowerType} Flowers `}</h3>
-            <Cart list={selectedFlowerType === 'Focal' ? focalFlowers : selectedFlowerType === 'Filler' ? fillerFlowers : foliageFlowers} />
+            <Cart list={selectedFlowerType === 'Focal' ? focalFlowers : selectedFlowerType === 'Filler' ? fillerFlowers : foliageFlowers} updateQuantity={updateQuantity} />
             <b>{`Total Price: $${totalPrice}.00`}</b>
 
             <div style={{ backgroundColor: '#DAF7A6' }}>
