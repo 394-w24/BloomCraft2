@@ -1,14 +1,14 @@
 const FlowerShopItem = ({ flower, flowerTypeList, setFlowerTypeList, calculatePrice}) => {
   // Determine the icon based on the flower's category
   let iconClassName;
-  switch (flower.category) {
-    case "Filler":
+  switch (flower.type.toLowerCase()) {
+    case "filler":
       iconClassName = "bi bi-flower1";
       break;
-    case "Foliage":
+    case "foliage":
       iconClassName = "bi bi-flower2";
       break;
-    case "Focal":
+    case "focal":
       iconClassName = "bi bi-flower3";
       break;
     default:
@@ -29,11 +29,12 @@ const FlowerShopItem = ({ flower, flowerTypeList, setFlowerTypeList, calculatePr
         flower.quantity = 1;
         setFlowerTypeList([...flowerTypeList, flower]);
       }
-      console.log(flowerTypeList);
+      // console.log(flowerTypeList);
       // for some reason, this breaks when calculatePrice is missing
       calculatePrice();
     }}>
-      <i className={iconClassName} style={{ fontSize: "3rem" }}></i>
+      {/* <i className={iconClassName} style={{ fontSize: "3rem" }}></i> */}
+      <img src={`/photos/small_flowers/${flower.photoName}`} alt={flower.name} style={{ width: "100px", height: "100px" }} />
       <p>{flower.name}</p>
       <p>${flower.price}.00</p>
     </div>

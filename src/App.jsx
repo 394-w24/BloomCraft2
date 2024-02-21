@@ -129,12 +129,9 @@ const App = () => {
               <ShoppingCartIcon style={{ scale: '1.5' }} /> Check out
             </IconButton>
 
-            <div style={{ backgroundColor: '#DAF7A6' }}>
-              {/* {console.log(dummyData)} */}
-              {/* todo: flowershop component (name WIP) needs to get a filtered list of data (based on type of flower (foliage,focal etc)), then needs to access fields like 
-      price and stuff */}
+            <div>
 
-              <FlowerShop flowerList={dummyData}
+              <FlowerShop flowerList={dummyData["flowers"]}
                 selectedFlowerType={selectedFlowerType}
                 typeList={selectedFlowerType === 'Focal' ? focalFlowers
                   : selectedFlowerType === 'Filler' ? fillerFlowers

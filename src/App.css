@@ -9,18 +9,6 @@
   margin: auto; /* Center the logo vertically and horizontally */
 }
 
-/* .App-logo {
-  height: 20vmin; /* Adjust the height as needed */
-  /* pointer-events: none; */
-/* } */ */
-
-
-/* @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-} */
-
 .App-header {
   background-color: #FFDB58; /* Mustard color */
   min-height: 5vh;
