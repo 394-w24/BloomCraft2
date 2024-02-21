@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "./Button";
 
 const Quiz = ({ setRecommendation }) => {
   const [questionNumber, setQuestionNumber] = useState(1);
@@ -34,44 +35,44 @@ const Quiz = ({ setRecommendation }) => {
       {questionNumber === 1 && (
         <div>
           Who are you shopping for today?
-          <button onClick={() => handleShoppingFor("Romantic Partner")}>
+          <Button onClick={() => handleShoppingFor("Romantic Partner")}>
             Romantic Partner
-          </button>
-          <button onClick={() => handleShoppingFor("Family Member")}>
+          </Button>
+          <Button onClick={() => handleShoppingFor("Family Member")}>
             Family Member
-          </button>
-          <button onClick={() => handleShoppingFor("Friend")}>Friend</button>
+          </Button>
+          <Button onClick={() => handleShoppingFor("Friend")}>Friend</Button>
         </div>
       )}
       {questionNumber === 2 && (
         <div>
           What occasion are you shopping for?
-          <button onClick={() => handleOccasion("Romantic Gesture")}>
+          <Button onClick={() => handleOccasion("Romantic Gesture")}>
             Romantic Gesture
-          </button>
-          <button onClick={() => handleOccasion("Appreciation")}>
+          </Button>
+          <Button onClick={() => handleOccasion("Appreciation")}>
             Appreciation
-          </button>
-          <button onClick={() => handleOccasion("Apology")}>Apology</button>
-          <button onClick={() => handleOccasion("Fun")}>Fun</button>
-          <button onClick={() => handleOccasion("Upcoming Holiday")}>
+          </Button>
+          <Button onClick={() => handleOccasion("Apology")}>Apology</Button>
+          <Button onClick={() => handleOccasion("Fun")}>Fun</Button>
+          <Button onClick={() => handleOccasion("Upcoming Holiday")}>
             Upcoming Holiday
-          </button>
+          </Button>
         </div>
       )}
       {questionNumber === 3 && (
         <div>
           Which Holiday are you shopping for?
-          <button onClick={() => handleHoliday("Valentine’s")}>
+          <Button onClick={() => handleHoliday("Valentine’s")}>
             Valentine’s
-          </button>
-          <button onClick={() => handleHoliday("Easter")}>Easter</button>
+          </Button>
+          <Button onClick={() => handleHoliday("Easter")}>Easter</Button>
         </div>
       )}
       {questionNumber === 4 && (
         <div>
           Would you like us to start you with a template?
-          <button
+          <Button
             variant="contained"
             color="primary"
             onClick={() => {
@@ -80,8 +81,8 @@ const Quiz = ({ setRecommendation }) => {
             }}
           >
             Yes, start with a template
-          </button>
-          <button
+          </Button>
+          <Button
             variant="contained"
             color="secondary"
             onClick={() => {
@@ -90,7 +91,7 @@ const Quiz = ({ setRecommendation }) => {
             }}
           >
             No, I will choose individually
-          </button>
+          </Button>
         </div>
       )}
     </div>
