@@ -1,12 +1,11 @@
-import React, { useState } from "react";
-import Button from "./Button";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-const Quiz = ({ setUserPreferences }) => {
+import Button from "./Button";
+const Quiz = ({setUserPreferences}) => {
   const [questionNumber, setQuestionNumber] = useState(1);
   const [shoppingFor, setShoppingFor] = useState("");
   const [occasion, setOccasion] = useState("");
-  const [holiday, setHoliday] = useState("");
+  // const [holiday, setHoliday] = useState("");
   const [template, setTemplate] = useState(false);
 
   const navigate = useNavigate();
@@ -26,13 +25,15 @@ const Quiz = ({ setUserPreferences }) => {
   };
 
   const handleHoliday = (value) => {
-    setHoliday(value);
+    // setHoliday(value);
+    setShoppingFor("all");
+    setOccasion(value);
     setQuestionNumber(4);
   };
 
   const handleFinishQuiz = () => {
-    console.log(shoppingFor, occasion, holiday);
-    setUserPreferences({ shoppingFor, occasion, holiday });
+    console.log(shoppingFor, occasion);
+    setUserPreferences({shoppingFor, occasion});
     navigate("/");
   };
 
@@ -41,26 +42,26 @@ const Quiz = ({ setUserPreferences }) => {
       {questionNumber === 1 && (
         <div>
           Who are you shopping for today?
-          <Button onClick={() => handleShoppingFor("Romantic Partner")}>
+          <Button onClick={() => handleShoppingFor("partner")}>
             Romantic Partner
           </Button>
-          <Button onClick={() => handleShoppingFor("Family Member")}>
+          <Button onClick={() => handleShoppingFor("familyMember")}>
             Family Member
           </Button>
-          <Button onClick={() => handleShoppingFor("Friend")}>Friend</Button>
+          <Button onClick={() => handleShoppingFor("friend")}>Friend</Button>
         </div>
       )}
       {questionNumber === 2 && (
         <div>
           What occasion are you shopping for?
-          <Button onClick={() => handleOccasion("Romantic Gesture")}>
+          <Button onClick={() => handleOccasion("romance")}>
             Romantic Gesture
           </Button>
-          <Button onClick={() => handleOccasion("Appreciation")}>
+          <Button onClick={() => handleOccasion("appreciation")}>
             Appreciation
           </Button>
-          <Button onClick={() => handleOccasion("Apology")}>Apology</Button>
-          <Button onClick={() => handleOccasion("Fun")}>Fun</Button>
+          <Button onClick={() => handleOccasion("apology")}>Apology</Button>
+          <Button onClick={() => handleOccasion("fun")}>Fun</Button>
           <Button onClick={() => handleOccasion("Upcoming Holiday")}>
             Upcoming Holiday
           </Button>
@@ -69,10 +70,10 @@ const Quiz = ({ setUserPreferences }) => {
       {questionNumber === 3 && (
         <div>
           Which Holiday are you shopping for?
-          <Button onClick={() => handleHoliday("Valentine’s")}>
+          <Button onClick={() => handleHoliday("valentines")}>
             Valentine’s
           </Button>
-          <Button onClick={() => handleHoliday("Easter")}>Easter</Button>
+          <Button onClick={() => handleHoliday("easter")}>Easter</Button>
         </div>
       )}
       {questionNumber === 4 && (

@@ -13,7 +13,7 @@ const App = () => {
         },
     });
 
-    const [userPreferences, setUserPreferences] = useState({});
+    const [userPreferences, setUserPreferences] = useState({"shoppingFor": "all", "occasion": "all"});
     
     return (
         <div>

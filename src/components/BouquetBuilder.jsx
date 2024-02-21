@@ -20,9 +20,9 @@ import FlowerShop from "./FlowerShop";
 import Cart from "./Cart";
 import FinalCart from "./FinalCart";
 import Button from "./Button";
-import Quiz from "./Quiz";
+import { useNavigate } from "react-router-dom";
 
-const BouquetBuilder = ({userPreferences}) => {
+const BouquetBuilder = ({ userPreferences }) => {
   const [selectedFlowerType, setSelectedFlowerType] = useState("Focal");
   const [focalFlowers, setFocalFlowers] = useState([]);
   const [fillerFlowers, setFillerFlowers] = useState([]);
@@ -30,11 +30,29 @@ const BouquetBuilder = ({userPreferences}) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [cartView, setCartView] = useState(false);
 
-  const [recipient, setRecipient] = useState(null);
-  const [occasion, setOccasion] = useState(null);
-  const [showQuiz, setShowQuiz] = useState(false);
+  const [userPreferencesFlowers, setUserPreferencesFlowers] = useState([]);
 
-  // const userPreferencesFlowers = dummyData["flowers"].filter( 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+
+    setUserPreferencesFlowers(dummyData["flowers"].filter((flower) => {
+      // apparently, the return keyword is VERY important
+      return (
+        userPreferences.occasion == "all" 
+        || flower.occasion.some((occasion) =>
+            occasion === userPreferences.occasion
+        )
+        && (userPreferences.shoppingFor == "all" 
+        || flower.shoppingFor.some((shoppingFor) =>
+            shoppingFor === userPreferences.shoppingFor
+        )))
+
+    }));
+    console.log(userPreferencesFlowers);
+  }, [userPreferences]);
+
+
 
   const calculatePrice = () => {
     let sum = 0;
@@ -94,134 +112,130 @@ const BouquetBuilder = ({userPreferences}) => {
 
 
   return (
-    
-      <div className="App">
-        <AppBar
-          position="static"
-          style={{ backgroundColor: "mustard !important" }}
-        >
-          <Toolbar>
-            <IconButton edge="start" color="inherit" aria-label="menu">
-              <MenuIcon />
-            </IconButton>
-            <div style={{ margin: "0 auto" }}>
-              <img src={logo} alt="Logo" className="App-logo" />
-            </div>
-            <IconButton
-              color="inherit"
-              aria-label="cart"
-              onClick={() => setCartView(!cartView)}
-            >
-              <ShoppingCartIcon style={{ scale: "1.5" }} />
-            </IconButton>
-          </Toolbar>
-        </AppBar>
 
-        {cartView ? (
-          <>
-            <ArrowBackIcon
-              style={{
-                left: "10",
-                top: "10vh",
-                position: "absolute",
-                scale: "1.5",
-              }}
-              onClick={() => setCartView(false)}
+    <div className="App">
+      <AppBar
+        position="static"
+        style={{ backgroundColor: "mustard !important" }}
+      >
+        <Toolbar>
+          <IconButton edge="start" color="inherit" aria-label="menu">
+            <MenuIcon />
+          </IconButton>
+          <div style={{ margin: "0 auto" }}>
+            <img src={logo} alt="Logo" className="App-logo" />
+          </div>
+          <IconButton
+            color="inherit"
+            aria-label="cart"
+            onClick={() => setCartView(!cartView)}
+          >
+            <ShoppingCartIcon style={{ scale: "1.5" }} />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+
+      {cartView ? (
+        <>
+          <ArrowBackIcon
+            style={{
+              left: "10",
+              top: "10vh",
+              position: "absolute",
+              scale: "1.5",
+            }}
+            onClick={() => setCartView(false)}
+          />
+          <FinalCart
+            focalFlowers={focalFlowers}
+            fillerFlowers={fillerFlowers}
+            foliageFlowers={foliageFlowers}
+          />
+          <b
+            style={{ fontSize: "1.5rem" }}
+          >{`Total Price: $${totalPrice}.00`}</b>
+        </>
+      ) : (
+        <>
+          <div
+            className="flower-type-button-container"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <FlowerTypeButton
+              flowerType={selectedFlowerType}
+              setFlowerType={setSelectedFlowerType}
+              value="Filler"
             />
-            <FinalCart
-              focalFlowers={focalFlowers}
-              fillerFlowers={fillerFlowers}
-              foliageFlowers={foliageFlowers}
+            <FlowerTypeButton
+              flowerType={selectedFlowerType}
+              setFlowerType={setSelectedFlowerType}
+              value="Focal"
             />
-            <b
-              style={{ fontSize: "1.5rem" }}
-            >{`Total Price: $${totalPrice}.00`}</b>
-          </>
-        ) : (
-          <>
-            <div
-              className="flower-type-button-container"
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
+            <FlowerTypeButton
+              flowerType={selectedFlowerType}
+              setFlowerType={setSelectedFlowerType}
+              value="Foliage"
+            />
+          </div>
+          <h3>{`${selectedFlowerType} Flowers `}</h3>
+          <Cart
+            list={
+              selectedFlowerType === "Focal"
+                ? focalFlowers
+                : selectedFlowerType === "Filler"
+                  ? fillerFlowers
+                  : foliageFlowers
+            }
+            updateQuantity={updateQuantity}
+          />
+          <b>{`Total Price: $${totalPrice}.00`}</b>
+
+          <IconButton
+            color="inherit"
+            aria-label="cart"
+            onClick={() => setCartView(!cartView)}
+          >
+            <img src="/icons/flower.png" style={{ width: "2rem" }}></img> View
+            cart
+          </IconButton>
+
+          <div>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => navigate("/quiz")}
             >
-              <FlowerTypeButton
-                flowerType={selectedFlowerType}
-                setFlowerType={setSelectedFlowerType}
-                value="Filler"
-              />
-              <FlowerTypeButton
-                flowerType={selectedFlowerType}
-                setFlowerType={setSelectedFlowerType}
-                value="Focal"
-              />
-              <FlowerTypeButton
-                flowerType={selectedFlowerType}
-                setFlowerType={setSelectedFlowerType}
-                value="Foliage"
-              />
-            </div>
-            <h3>{`${selectedFlowerType} Flowers `}</h3>
-            <Cart
-              list={
+              Start Quiz
+            </Button>
+
+            <FlowerShop
+              // flowerList={dummyData["flowers"]}
+              flowerList={userPreferencesFlowers}
+              selectedFlowerType={selectedFlowerType}
+              typeList={
                 selectedFlowerType === "Focal"
                   ? focalFlowers
                   : selectedFlowerType === "Filler"
-                  ? fillerFlowers
-                  : foliageFlowers
-              }
-              updateQuantity={updateQuantity}
-            />
-            <b>{`Total Price: $${totalPrice}.00`}</b>
-
-            <IconButton
-              color="inherit"
-              aria-label="cart"
-              onClick={() => setCartView(!cartView)}
-            >
-              <img src="/icons/flower.png" style={{ width: "2rem" }}></img> View
-              cart
-            </IconButton>
-
-            <div>
-              {/* example button component! please delete!*/}
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={() => setShowQuiz(true)}
-              >
-                Start Quiz
-              </Button>
-
-              {showQuiz && (
-                <Quiz setRecipient={setRecipient} setOccasion={setOccasion} />
-              )}
-
-              <FlowerShop
-                flowerList={dummyData["flowers"]}
-                selectedFlowerType={selectedFlowerType}
-                typeList={
-                  selectedFlowerType === "Focal"
-                    ? focalFlowers
-                    : selectedFlowerType === "Filler"
                     ? fillerFlowers
                     : foliageFlowers
-                }
-                setTypeList={
-                  selectedFlowerType === "Focal"
-                    ? setFocalFlowers
-                    : selectedFlowerType === "Filler"
+              }
+              setTypeList={
+                selectedFlowerType === "Focal"
+                  ? setFocalFlowers
+                  : selectedFlowerType === "Filler"
                     ? setFillerFlowers
                     : setFoliageFlowers
-                }
-                calculatePrice={calculatePrice}
-              />
-            </div>
-          </>
-        )}
-      </div>
+              }
+              calculatePrice={calculatePrice}
+            />
+          </div>
+        </>
+      )}
+    </div>
   );
 };
 

@@ -9,15 +9,8 @@ const dummyData = {
             "photoName": "strawflower.png",
             "color": "orange",
             "meaning": "joy, happiness and adventure",
-            "valentines": false,
-            "easter": false,
-            "romance": false,
-            "appreciation": true,
-            "apology": false,
-            "fun": true,
-            "partner": true,
-            "familyMember": true,
-            "friend": true
+            "occasion": ["appreciation", "fun"],
+            "shoppingFor": ["partner", "familyMember", "friend"]
         },
         {
             "name": "Spray Roses",
@@ -28,15 +21,8 @@ const dummyData = {
             "photoName": "sprayrose.png",
             "color": "pink",
             "meaning": "gratitude",
-            "valentines": false,
-            "easter": true,
-            "romance": false,
-            "appreciation": true,
-            "apology": false,
-            "fun": false,
-            "partner": true,
-            "familyMember": true,
-            "friend": true
+            "occasion": ["easter", "appreciation"],
+            "shoppingFor": ["partner", "familyMember", "friend"]
         },
         {
             "name": "Queen Anne's Lace",
@@ -47,15 +33,8 @@ const dummyData = {
             "photoName": "queenanneslace.png",
             "color": "white",
             "meaning": "safety",
-            "valentines": true,
-            "easter": true,
-            "romance": true,
-            "appreciation": true,
-            "apology": false,
-            "fun": true,
-            "partner": true,
-            "familyMember": true,
-            "friend": true
+            "occasion": ["valentines", "easter", "romance", "appreciation"],
+            "shoppingFor": ["partner", "familyMember", "friend"]
         },
         {
             "name": "Lavender",
@@ -66,15 +45,8 @@ const dummyData = {
             "photoName": "lavender.png",
             "color": "purple",
             "meaning": "serenity, devotion",
-            "valentines": false,
-            "easter": true,
-            "romance": false,
-            "appreciation": true,
-            "apology": true,
-            "fun": false,
-            "partner": true,
-            "familyMember": true,
-            "friend": true
+            "occasion": ["easter", "appreciation", "apology"],
+            "shoppingFor": ["partner", "familyMember", "friend"]
         },
         {
             "name": "Daisy",
@@ -85,15 +57,8 @@ const dummyData = {
             "photoName": "daisy.png",
             "color": "white",
             "meaning": "love, loyalty",
-            "valentines": true,
-            "easter": true,
-            "romance": true,
-            "appreciation": true,
-            "apology": false,
-            "fun": false,
-            "partner": true,
-            "familyMember": false,
-            "friend": true
+            "occasion": ["valentines", "easter", "romance", "appreciation"],
+            "shoppingFor": ["partner", "friend"]
         },
         {
             "name": "Tulip",
@@ -104,15 +69,8 @@ const dummyData = {
             "photoName": "tulip.png",
             "color": "purple",
             "meaning": "deep love",
-            "valentines": true,
-            "easter": true,
-            "romance": true,
-            "appreciation": true,
-            "apology": false,
-            "fun": true,
-            "partner": true,
-            "familyMember": true,
-            "friend": false
+            "occasion": ["valentines", "easter", "romance", "appreciation", "fun"],
+            "shoppingFor": ["partner", "familyMember"]
         },
         {
             "name": "Red Rose",
@@ -123,15 +81,8 @@ const dummyData = {
             "photoName": "redrose.png",
             "color": "red",
             "meaning": "love, passion",
-            "valentines": true,
-            "easter": false,
-            "romance": true,
-            "appreciation": true,
-            "apology": true,
-            "fun": true,
-            "partner": false,
-            "familyMember": false,
-            "friend": true
+            "occasion": ["valentines", "romance", "appreciation", "apology", "fun"],
+            "shoppingFor": ["friend"]
         },
         {
             "name": "Hydrangea",
@@ -142,15 +93,8 @@ const dummyData = {
             "photoName": "hydrangea.png",
             "color": "blue",
             "meaning": "gratitude",
-            "valentines": false,
-            "easter": true,
-            "romance": false,
-            "appreciation": true,
-            "apology": false,
-            "fun": false,
-            "partner": true,
-            "familyMember": true,
-            "friend": true
+            "occasion": ["easter", "appreciation"],
+            "shoppingFor": ["partner", "familyMember", "friend"]
         },
         {
             "name": "Garden Rose",
@@ -161,15 +105,8 @@ const dummyData = {
             "photoName": "gardenrose.png",
             "color": "pink",
             "meaning": "love, romance",
-            "valentines": true,
-            "easter": false,
-            "romance": true,
-            "appreciation": true,
-            "apology": false,
-            "fun": true,
-            "partner": false,
-            "familyMember": false,
-            "friend": true
+            "occasion": ["valentines", "romance", "appreciation", "fun"],
+            "shoppingFor": ["friend"]
         },
         {
             "name": "Dahlia",
@@ -180,15 +117,8 @@ const dummyData = {
             "photoName": "dahlia.png",
             "color": "red",
             "meaning": "eternal love, kindness",
-            "valentines": true,
-            "easter": true,
-            "romance": true,
-            "appreciation": true,
-            "apology": false,
-            "fun": false,
-            "partner": true,
-            "familyMember": true,
-            "friend": true
+            "occasion": ["valentines", "easter", "romance", "appreciation"],
+            "shoppingFor": ["partner", "familyMember", "friend"]
         },
         {
             "name": "Carnation",
@@ -199,15 +129,8 @@ const dummyData = {
             "photoName": "carn.png",
             "color": "red",
             "meaning": "distinction, love",
-            "valentines": true,
-            "easter": false,
-            "romance": true,
-            "appreciation": true,
-            "apology": false,
-            "fun": false,
-            "partner": true,
-            "familyMember": true,
-            "friend": true
+            "occasion": ["valentines", "romance", "appreciation"],
+            "shoppingFor": ["partner", "familyMember", "friend"]
         },
         {
             "name": "Ruscus",
@@ -218,15 +141,8 @@ const dummyData = {
             "photoName": "ruscus.png",
             "color": "green",
             "meaning": "thoughtfulness",
-            "valentines": true,
-            "easter": true,
-            "romance": true,
-            "appreciation": true,
-            "apology": false,
-            "fun": false,
-            "partner": true,
-            "familyMember": true,
-            "friend": true
+            "occasion": ["valentines", "easter", "romance", "appreciation"],
+            "shoppingFor": ["partner", "familyMember", "friend"]
         },
         {
             "name": "Nagi",
@@ -237,15 +153,8 @@ const dummyData = {
             "photoName": "nagi.png",
             "color": "green",
             "meaning": "",
-            "valentines": true,
-            "easter": true,
-            "romance": true,
-            "appreciation": true,
-            "apology": true,
-            "fun": true,
-            "partner": true,
-            "familyMember": true,
-            "friend": true
+            "occasion": ["valentines", "easter", "romance", "appreciation", "apology", "fun"],
+            "shoppingFor": ["partner", "familyMember", "friend"]
         },
         {
             "name": "Leather Leaf",
@@ -256,15 +165,8 @@ const dummyData = {
             "photoName": "leatherleaf.png",
             "color": "green",
             "meaning": "delicate attention",
-            "valentines": true,
-            "easter": true,
-            "romance": true,
-            "appreciation": true,
-            "apology": true,
-            "fun": false,
-            "partner": false,
-            "familyMember": false,
-            "friend": false
+            "occasion": ["valentines", "easter", "romance", "appreciation", "apology"],
+            "shoppingFor": []
         },
         {
             "name": "Ivy",
@@ -275,15 +177,8 @@ const dummyData = {
             "photoName": "ivy.png",
             "color": "green",
             "meaning": "everlasting love, loyalty",
-            "valentines": true,
-            "easter": true,
-            "romance": true,
-            "appreciation": true,
-            "apology": true,
-            "fun": false,
-            "partner": false,
-            "familyMember": false,
-            "friend": false
+            "occasion": ["valentines", "easter", "romance", "appreciation", "apology"],
+            "shoppingFor": []
         }
     ]
 }
