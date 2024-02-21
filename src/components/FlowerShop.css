@@ -1,6 +1,6 @@
 .flower-shop-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 12rem);
+    grid-template-columns: repeat(auto-fill, 10rem);
     justify-content: center;
 
     background-color: #b2d599;
@@ -10,8 +10,8 @@
 
 .flower-shop-item {
     outline: solid 1px #000;
-    padding: 1rem;
-    margin: 1rem;
+    padding: 0rem 1rem;
+    margin: 0.5rem;
     text-align: center;
     border-radius: 0.5rem;
 }

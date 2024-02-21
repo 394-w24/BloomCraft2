@@ -34,7 +34,7 @@ const FlowerShopItem = ({ flower, flowerTypeList, setFlowerTypeList, calculatePr
       calculatePrice();
     }}>
       {/* <i className={iconClassName} style={{ fontSize: "3rem" }}></i> */}
-      <img src={`/photos/small_flowers/${flower.photoName}`} alt={flower.name} style={{ width: "100px", height: "100px" }} />
+      <img src={`/photos/small_flowers/${flower.photoName}`} alt={flower.name} style={{ width: "100px", height: "100px", marginBottom: "10px" }} />
       <p>{flower.name}</p>
       <p>${flower.price}.00</p>
     </div>
