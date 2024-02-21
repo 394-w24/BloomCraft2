@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import Button from "./Button";
+import { useNavigate } from "react-router-dom";
 
-const Quiz = ({ setRecommendation }) => {
+const Quiz = ({ setUserPreferences }) => {
   const [questionNumber, setQuestionNumber] = useState(1);
   const [shoppingFor, setShoppingFor] = useState("");
   const [occasion, setOccasion] = useState("");
   const [holiday, setHoliday] = useState("");
+  const [template, setTemplate] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleShoppingFor = (value) => {
     setShoppingFor(value);
@@ -28,6 +32,8 @@ const Quiz = ({ setRecommendation }) => {
 
   const handleFinishQuiz = () => {
     console.log(shoppingFor, occasion, holiday);
+    setUserPreferences({ shoppingFor, occasion, holiday });
+    navigate("/");
   };
 
   return (

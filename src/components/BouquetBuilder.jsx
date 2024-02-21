@@ -22,16 +22,19 @@ import FinalCart from "./FinalCart";
 import Button from "./Button";
 import Quiz from "./Quiz";
 
-const BouquetBuilder = () => {
+const BouquetBuilder = ({userPreferences}) => {
   const [selectedFlowerType, setSelectedFlowerType] = useState("Focal");
   const [focalFlowers, setFocalFlowers] = useState([]);
   const [fillerFlowers, setFillerFlowers] = useState([]);
   const [foliageFlowers, setFoliageFlowers] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [cartView, setCartView] = useState(false);
+
   const [recipient, setRecipient] = useState(null);
   const [occasion, setOccasion] = useState(null);
   const [showQuiz, setShowQuiz] = useState(false);
+
+  // const userPreferencesFlowers = dummyData["flowers"].filter( 
 
   const calculatePrice = () => {
     let sum = 0;
@@ -114,7 +117,6 @@ const BouquetBuilder = () => {
           </Toolbar>
         </AppBar>
 
-        {/* <BouquetSizeSelector bouquetSizeSelection={bouquetSize} setBouquetSize={setBouquetSize} /> */}
         {cartView ? (
           <>
             <ArrowBackIcon
