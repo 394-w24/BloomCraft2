@@ -1,20 +1,20 @@
 const FlowerShopItem = ({ flower, flowerTypeList, setFlowerTypeList, calculatePrice}) => {
   // Determine the icon based on the flower's category
-  let iconClassName;
-  switch (flower.type.toLowerCase()) {
-    case "filler":
-      iconClassName = "bi bi-flower1";
-      break;
-    case "foliage":
-      iconClassName = "bi bi-flower2";
-      break;
-    case "focal":
-      iconClassName = "bi bi-flower3";
-      break;
-    default:
-      iconClassName = "bi bi-flower3"; // Default to flower1
-      break;
-  }
+  // let iconClassName;
+  // switch (flower.type.toLowerCase()) {
+  //   case "filler":
+  //     iconClassName = "bi bi-flower1";
+  //     break;
+  //   case "foliage":
+  //     iconClassName = "bi bi-flower2";
+  //     break;
+  //   case "focal":
+  //     iconClassName = "bi bi-flower3";
+  //     break;
+  //   default:
+  //     iconClassName = "bi bi-flower3"; // Default to flower1
+  //     break;
+  // }
 
   return (
     <div className="flower-shop-item" onClick={() => {

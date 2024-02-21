@@ -127,7 +127,7 @@ const App = () => {
             <b>{`Total Price: $${totalPrice}.00`}</b>
 
             <IconButton color="inherit" aria-label="cart" onClick={() => setCartView(!cartView)}>
-              <ShoppingCartIcon style={{ scale: '1.5' }} /> Check out
+              <img src="/icons/flower.png" style={{"width": "2rem"}}></img> View cart
             </IconButton>
 
             <div>
