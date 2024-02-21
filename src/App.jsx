@@ -20,6 +20,7 @@ import dummyData from './components/dummyData';
 import FlowerShop from './components/FlowerShop';
 import Cart from './components/Cart';
 import FinalCart from './components/FinalCart';
+import Button from './components/Button';
 
 const App = () => {
   const [selectedFlowerType, setSelectedFlowerType] = useState('Focal');
@@ -130,7 +131,8 @@ const App = () => {
             </IconButton>
 
             <div>
-
+              {/* example button component! please delete!*/}
+            <Button>Lorem ipsum!</Button>
               <FlowerShop flowerList={dummyData["flowers"]}
                 selectedFlowerType={selectedFlowerType}
                 typeList={selectedFlowerType === 'Focal' ? focalFlowers
