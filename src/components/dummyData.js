@@ -179,6 +179,138 @@ const dummyData = {
             "meaning": "everlasting love, loyalty",
             "occasion": ["valentines", "easter", "romance", "appreciation", "apology"],
             "shoppingFor": []
+        },
+        {
+            "name": "Spray Carnations",
+            "type": "Filler",
+            "unit": "bunch",
+            "price": 2.00,
+            "priceRange": "$",
+            "photoName": "spraycarnations.png",
+            "color": "yellow",
+            "meaning": "love, affection",
+            "occasion": ["valentines", "romance", "appreciation"],
+            "shoppingFor": ["partner", "familyMember", "friend"]
+        },
+        {
+            "name": "Lilac",
+            "type": "Filler",
+            "unit": "bunch",
+            "price": 4.00,
+            "priceRange": "$$$",
+            "photoName": "lilac.png",
+            "color": "purple",
+            "meaning": "spirituality",
+            "occasion": ["easter"],
+            "shoppingFor": ["friend"]
+        },
+        {
+            "name": "Bells of Ireland",
+            "type": "Filler",
+            "unit": "bunch",
+            "price": 3.00,
+            "priceRange": "$$",
+            "photoName": "bellsofireland.png",
+            "color": "green",
+            "meaning": "good luck",
+            "occasion": ["easter"],
+            "shoppingFor": ["partner", "familyMember", "friend"]
+        },
+        {
+            "name": "Baby's Breath",
+            "type": "Filler",
+            "unit": "bunch",
+            "price": 3.00,
+            "priceRange": "$$",
+            "photoName": "babysbreath.png",
+            "color": "white",
+            "meaning": "hope, new beginnings",
+            "occasion": ["easter", "romance", "appreciation", "apology", "fun"],
+            "shoppingFor": ["partner", "familyMember", "friend"]
+        },
+        {
+            "name": "Mum",
+            "type": "Focal",
+            "unit": "bunch",
+            "price": 3.00,
+            "priceRange": "$",
+            "photoName": "mum.png",
+            "color": "pink",
+            "meaning": "joy, loyalty, devoted love",
+            "occasion": ["valentines", "easter", "romance", "appreciation"],
+            "shoppingFor": ["partner", "familyMember", "friend"]
+        },
+        {
+            "name": "Buttercup",
+            "type": "Focal",
+            "unit": "stem",
+            "price": 4.00,
+            "priceRange": "$$",
+            "photoName": "buttercup.png",
+            "color": "yellow",
+            "meaning": "joy, youth, happiness",
+            "occasion": ["easter"],
+            "shoppingFor": ["friend"]
+        },
+        {
+            "name": "Huckleberry",
+            "type": "Foliage",
+            "unit": "bunch",
+            "price": 5.00,
+            "priceRange": "$$",
+            "photoName": "huckleberry.png",
+            "color": "green",
+            "meaning": "simple pleasure",
+            "occasion": ["easter"],
+            "shoppingFor": ["partner", "familyMember", "friend"]
+        },
+        {
+            "name": "Fern",
+            "type": "Foliage",
+            "unit": "bunch",
+            "price": 4.00,
+            "priceRange": "$",
+            "photoName": "fern.png",
+            "color": "green",
+            "meaning": "new beginnings",
+            "occasion": ["easter", "apology"],
+            "shoppingFor": ["partner", "familyMember", "friend"]
+        },
+        {
+            "name": "Eucalyptus",
+            "type": "Foliage",
+            "unit": "bunch",
+            "price": 5.00,
+            "priceRange": "$$",
+            "photoName": "eucalyptus.png",
+            "color": "green",
+            "meaning": "protection",
+            "occasion": ["valentines", "easter", "romance", "appreciation", "apology"],
+            "shoppingFor": ["partner", "familyMember", "friend"]
+        },
+        {
+            "name": "Sunflower",
+            "type": "Focal",
+            "unit": "stem",
+            "price": 5.00,
+            "priceRange": "$$$",
+            "photoName": "sunflower.png",
+            "color": "yellow",
+            "meaning": "loyalty, adoration",
+            "occasion": ["easter", "appreciation"],
+            "shoppingFor": ["friend"]
+        },
+        {
+            "name": "Galax",
+            "type": "Foliage",
+            "unit": "bunch",
+            "price": 4.00,
+            "priceRange": "$",
+            "photoName": "galax.png",
+            "color": "green",
+            "meaning": "friendship, encouragement",
+            "occasion": ["easter"],
+            "shoppingFor": []
         }
     ]
 }
