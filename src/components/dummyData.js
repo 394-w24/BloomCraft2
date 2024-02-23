@@ -186,7 +186,7 @@ const dummyData = {
             "unit": "bunch",
             "price": 2.00,
             "priceRange": "$",
-            "photoName": "spraycarnations.png",
+            "photoName": "spraycarnation.png",
             "color": "yellow",
             "meaning": "love, affection",
             "occasion": ["valentines", "romance", "appreciation"],
