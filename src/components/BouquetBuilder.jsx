@@ -22,6 +22,7 @@ import FinalCart from "./FinalCart";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 
+
 const BouquetBuilder = ({ userPreferences }) => {
   const [selectedFlowerType, setSelectedFlowerType] = useState("Focal");
   const [focalFlowers, setFocalFlowers] = useState([]);

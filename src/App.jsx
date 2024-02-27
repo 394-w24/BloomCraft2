@@ -3,6 +3,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import BouquetBuilder from "./components/BouquetBuilder";
 import Quiz from "./components/Quiz";
+import Login from "./components/Login"
 
 const App = () => {
     const theme = createTheme({
@@ -20,8 +21,11 @@ const App = () => {
             <ThemeProvider theme={theme}>
                 <BrowserRouter>
                     <Routes>
-                        <Route path="/" element={<BouquetBuilder userPreferences={userPreferences} />} />
+                        <Route path="/" element={<Login />} />
+                        <Route path="/bouquetbuilder" element={<BouquetBuilder setUserPreferences={setUserPreferences}/>} />
                         <Route path="/quiz" element={<Quiz setUserPreferences={setUserPreferences}/>} />
+                        
+                        
                     </Routes>
                 </BrowserRouter>
             </ThemeProvider>

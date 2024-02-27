@@ -35,7 +35,8 @@ const Quiz = ({ setUserPreferences }) => {
   const handleFinishQuiz = () => {
     console.log(shoppingFor, occasion);
     setUserPreferences({ shoppingFor, occasion });
-    navigate("/");
+    // navigate("/");
+    navigate("/bouquetbuilder")
   };
 
   return (
