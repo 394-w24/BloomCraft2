@@ -6,6 +6,7 @@ const VisualBouquet = ({ focalList, fillerList, foliageList }) => {
     for (let i = 0; i < flower.quantity; i++) {
       flowerIcons.push(
         <img
+          style={{top: `${Math.floor(i / 3) * 10}px`}}
           src={`/photos/small_flowers/${flower.photoName}`}
           alt={flower.name}
           className="vb-flower-image"
