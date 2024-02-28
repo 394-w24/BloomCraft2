@@ -2,7 +2,8 @@ import { describe, expect, test } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
 import App from "./App";
 import Login from "./components/Login";
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import BouquetBuilder from "./components/BouquetBuilder";
 describe("trivial tests", () => {
   test("Login page renders", () => {
     render(<App />);
