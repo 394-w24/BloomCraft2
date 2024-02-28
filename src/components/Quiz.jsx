@@ -32,16 +32,20 @@ const Quiz = ({ setUserPreferences }) => {
     setQuestionNumber(4);
   };
 
-  const handleFinishQuiz = () => {
-    console.log(shoppingFor, occasion);
-    setUserPreferences({ shoppingFor, occasion });
-    // navigate("/");
-    navigate("/bouquetbuilder")
+  const handleFinishQuiz = (useTemplate) => {
+    console.log(shoppingFor, occasion, useTemplate);
+    setUserPreferences({ shoppingFor, occasion, template: useTemplate });
+    navigate("/bouquetbuilder");
   };
 
   return (
     <div className="quiz-container">
-      <img src="/icons/logo.png" alt="logo" className="logo" style={{width: "30%", height: "auto"}} />
+      <img
+        src="/icons/logo.png"
+        alt="logo"
+        className="logo"
+        style={{ width: "30%", height: "auto" }}
+      />
       {questionNumber === 1 && (
         <div className="quiz-question">
           <p className="intro">
@@ -97,20 +101,14 @@ const Quiz = ({ setUserPreferences }) => {
             <Button
               variant="contained"
               color="primary"
-              onClick={() => {
-                setTemplate(true);
-                handleFinishQuiz();
-              }}
+              onClick={() => handleFinishQuiz(true)}
             >
               Yes, start with a template
             </Button>
             <Button
               variant="contained"
               color="secondary"
-              onClick={() => {
-                setTemplate(false);
-                handleFinishQuiz();
-              }}
+              onClick={() => handleFinishQuiz(false)}
             >
               No, I will choose individually
             </Button>

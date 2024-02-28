@@ -36,23 +36,60 @@ const BouquetBuilder = ({ userPreferences }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setUserPreferencesFlowers(
-      dummyData["flowers"].filter((flower) => {
-        // apparently, the return keyword is VERY important
-        return (
-          userPreferences.occasion == "all" ||
-          (flower.occasion.some(
-            (occasion) => occasion === userPreferences.occasion
-          ) &&
-            (userPreferences.shoppingFor == "all" ||
-              flower.shoppingFor.some(
-                (shoppingFor) => shoppingFor === userPreferences.shoppingFor
-              )))
-        );
-      })
-    );
-    console.log(userPreferencesFlowers);
+    const filteredFlowers = dummyData["flowers"].filter((flower) => {
+      return (
+        userPreferences.occasion === "all" ||
+        (flower.occasion.some(
+          (occasion) => occasion === userPreferences.occasion
+        ) &&
+          (userPreferences.shoppingFor === "all" ||
+            flower.shoppingFor.some(
+              (shoppingFor) => shoppingFor === userPreferences.shoppingFor
+            )))
+      );
+    });
+
+    setUserPreferencesFlowers(filteredFlowers);
+
+    if (userPreferences.template) {
+      prePopulateCart(filteredFlowers);
+    }
   }, [userPreferences]);
+
+  const prePopulateCart = (flowers) => {
+    const newFocalFlowers = [];
+    const newFillerFlowers = [];
+    const newFoliageFlowers = [];
+
+    flowers.forEach((flower) => {
+      const newFlower = { ...flower, quantity: 1 }; // Prepare the flower object with quantity
+      switch (flower.type) {
+        case "Focal":
+          newFocalFlowers.push(newFlower);
+          break;
+        case "Filler":
+          newFillerFlowers.push(newFlower);
+          break;
+        case "Foliage":
+          newFoliageFlowers.push(newFlower);
+          break;
+        default:
+          console.log("Unknown flower type:", flower.type);
+      }
+    });
+
+    setFocalFlowers((focalFlowers) => [...focalFlowers, ...newFocalFlowers]);
+    setFillerFlowers((fillerFlowers) => [
+      ...fillerFlowers,
+      ...newFillerFlowers,
+    ]);
+    setFoliageFlowers((foliageFlowers) => [
+      ...foliageFlowers,
+      ...newFoliageFlowers,
+    ]);
+
+    calculatePrice();
+  };
 
   const calculatePrice = () => {
     let sum = 0;
