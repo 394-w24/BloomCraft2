@@ -57,20 +57,20 @@
     z-index: 3;
   }
 
-  .filler-flowers img:nth-child(1) {
+  .filler-flowers img:nth-child(3n + 1) {
     top: 0;
     /* left: -10; */
     /* z-index: 3; */
   }
   
-  .filler-flowers img:nth-child(2) {
+  .filler-flowers img:nth-child(3n + 2) {
     /* top: 0; */
     left: -50%;
     /* transform: translateY(-50%); */
     /* z-index: 1; */
   }
   
-  .filler-flowers img:nth-child(3) {
+  .filler-flowers img:nth-child(3n + 3) {
     /* bottom: 10; */
     left: 0%;
     /* transform: translateX(50%); */

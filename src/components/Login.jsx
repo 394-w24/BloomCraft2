@@ -8,7 +8,7 @@ function Login() {
 
     const handleProceedAsGuest = () => {
         // Navigate to the homepage when "Proceed as Guest" button is clicked
-        // navigate('/bouquetbuilder');
+        navigate('/bouquetbuilder');
     };
 
     return (
@@ -17,7 +17,8 @@ function Login() {
 
 
             <h2 className="login-h2">Bloomcrafter Login</h2>
-            <form className="login-form">
+            {/* for now, we're just gonna log in as guest anyways */}
+            <form className="login-form" onSubmit={handleProceedAsGuest}>
                 <input className="login-input" type="text" name="username" placeholder="Username" required /><br />
                 <input className="login-input" type="password" name="password" placeholder="Password" required /><br />
                 <input className="login-input" type="submit" value="Login" />
