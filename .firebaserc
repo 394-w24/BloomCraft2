@@ -1,5 +1,18 @@
 {
   "projects": {
     "default": "bloomcrafter-fbd57"
-  }
+  },
+  "targets": {
+    "bloomcrafter-fbd57": {
+      "hosting": {
+        "dev": [
+          "bloomcrafter-dev.com"
+        ],
+        "main": [
+          "bloomcrafter-fbd57.web.app"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }

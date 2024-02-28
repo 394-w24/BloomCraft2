@@ -2,12 +2,23 @@
   "database": {
     "rules": "database.rules.json"
   },
-  "hosting": {
+  "hosting": [{
     "public": "dist",
+    "target": "main",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
     ]
-  }
+  },
+  {
+    "public": "dist",
+    "target": "dev",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }]
+  
 }
