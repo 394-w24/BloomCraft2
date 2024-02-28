@@ -13,17 +13,17 @@ function Login() {
 
     return (
         <div className="login-container">
-           <img src={logo} style={{ width: "8rem" }}></img>
+           <img className="login-img" src={logo} style={{ width: "8rem" }}></img>
 
 
-            <h2>Bloomcrafter Login</h2>
-            <form>
-                <input type="text" name="username" placeholder="Username" required /><br />
-                <input type="password" name="password" placeholder="Password" required /><br />
-                <input type="submit" value="Login" />
+            <h2 className="login-h2">Bloomcrafter Login</h2>
+            <form className="login-form">
+                <input className="login-input" type="text" name="username" placeholder="Username" required /><br />
+                <input className="login-input" type="password" name="password" placeholder="Password" required /><br />
+                <input className="login-input" type="submit" value="Login" />
             </form>
             <div className="proceed-as-guest">
-                <button onClick={handleProceedAsGuest}>Proceed as Guest</button>
+                <button className="login-button" onClick={handleProceedAsGuest}>Proceed as Guest</button>
             </div>
         </div>
     );

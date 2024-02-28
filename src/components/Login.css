@@ -8,29 +8,29 @@
     padding: 20px;
 }
 
-img {
+.login-img {
     width: 100px;
     height: 100px;
     margin-bottom: 20px;
 }
 
-h2 {
+.login-h2 {
     margin-bottom: 20px;
 }
 
-form {
+.login-form {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-input {
+.login-input {
     margin-bottom: 10px;
     padding: 5px;
     width: 200px;
 }
 
-input[type="submit"] {
+.login-input[type="submit"] {
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -46,7 +46,7 @@ input[type="submit"] {
     margin-top: 20px;
 }
 
-button {
+.login-button {
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -58,6 +58,6 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.login-button:hover {
     background-color: #45a049;
 }

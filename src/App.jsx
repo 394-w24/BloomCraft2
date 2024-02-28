@@ -22,7 +22,7 @@ const App = () => {
                 <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<Login />} />
-                        <Route path="/bouquetbuilder" element={<BouquetBuilder setUserPreferences={setUserPreferences}/>} />
+                        <Route path="/bouquetbuilder" element={<BouquetBuilder userPreferences={userPreferences}/>} />
                         <Route path="/quiz" element={<Quiz setUserPreferences={setUserPreferences}/>} />
                         
                         

@@ -21,7 +21,7 @@ import Cart from "./Cart";
 import FinalCart from "./FinalCart";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
-
+import VisualBouquet from "./VisualBouquet";
 
 const BouquetBuilder = ({ userPreferences }) => {
   const [selectedFlowerType, setSelectedFlowerType] = useState("Focal");
@@ -36,24 +36,23 @@ const BouquetBuilder = ({ userPreferences }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-
-    setUserPreferencesFlowers(dummyData["flowers"].filter((flower) => {
-      // apparently, the return keyword is VERY important
-      return (
-        userPreferences.occasion == "all" 
-        || flower.occasion.some((occasion) =>
-            occasion === userPreferences.occasion
-        )
-        && (userPreferences.shoppingFor == "all" 
-        || flower.shoppingFor.some((shoppingFor) =>
-            shoppingFor === userPreferences.shoppingFor
-        )))
-
-    }));
+    setUserPreferencesFlowers(
+      dummyData["flowers"].filter((flower) => {
+        // apparently, the return keyword is VERY important
+        return (
+          userPreferences.occasion == "all" ||
+          (flower.occasion.some(
+            (occasion) => occasion === userPreferences.occasion
+          ) &&
+            (userPreferences.shoppingFor == "all" ||
+              flower.shoppingFor.some(
+                (shoppingFor) => shoppingFor === userPreferences.shoppingFor
+              )))
+        );
+      })
+    );
     console.log(userPreferencesFlowers);
   }, [userPreferences]);
-
-
 
   const calculatePrice = () => {
     let sum = 0;
@@ -68,6 +67,10 @@ const BouquetBuilder = ({ userPreferences }) => {
     });
     setTotalPrice(sum);
     console.log(totalPrice);
+
+    console.log(focalFlowers);
+    console.log(fillerFlowers);
+    console.log(foliageFlowers);
   };
 
   const updateQuantity = (index, newQuantity) => {
@@ -111,9 +114,7 @@ const BouquetBuilder = ({ userPreferences }) => {
     calculatePrice();
   }, [focalFlowers, fillerFlowers, foliageFlowers]);
 
-
   return (
-
     <div className="App">
       <AppBar
         position="static"
@@ -188,8 +189,8 @@ const BouquetBuilder = ({ userPreferences }) => {
               selectedFlowerType === "Focal"
                 ? focalFlowers
                 : selectedFlowerType === "Filler"
-                  ? fillerFlowers
-                  : foliageFlowers
+                ? fillerFlowers
+                : foliageFlowers
             }
             updateQuantity={updateQuantity}
           />
@@ -205,6 +206,12 @@ const BouquetBuilder = ({ userPreferences }) => {
           </IconButton>
 
           <div>
+            <VisualBouquet
+              focalList={focalFlowers}
+              fillerList={fillerFlowers}
+              foliageList={foliageFlowers}
+            />
+
             <Button
               variant="contained"
               color="primary"
@@ -221,15 +228,15 @@ const BouquetBuilder = ({ userPreferences }) => {
                 selectedFlowerType === "Focal"
                   ? focalFlowers
                   : selectedFlowerType === "Filler"
-                    ? fillerFlowers
-                    : foliageFlowers
+                  ? fillerFlowers
+                  : foliageFlowers
               }
               setTypeList={
                 selectedFlowerType === "Focal"
                   ? setFocalFlowers
                   : selectedFlowerType === "Filler"
-                    ? setFillerFlowers
-                    : setFoliageFlowers
+                  ? setFillerFlowers
+                  : setFoliageFlowers
               }
               calculatePrice={calculatePrice}
             />

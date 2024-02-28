@@ -1,0 +1,79 @@
+.visual-bouquet {
+    position: relative;
+    display: inline-flex;
+    width: 200px;
+    height: 200px;
+    /* outline: 1px solid black; */
+}
+.focal-flowers {
+    position: relative;
+    width: 200px; /* Adjust the width as needed */
+    height: 200px; /* Adjust the height as needed */
+  }
+  
+  .focal-flowers img {
+    position: absolute;
+    width: 100%;
+    height: auto;
+  }
+  
+  .focal-flowers img:nth-child(3n + 1) {
+    /* top: 0; */
+    left: -10%;
+    z-index: 2;
+  }
+  
+  .focal-flowers img:nth-child(3n + 2) {
+    /* top: 0; */
+    left: 50%;
+    /* transform: translateY(-50%); */
+    z-index: 2;
+  }
+
+  .focal-flowers img:nth-child(3n + 3) {
+    /* top: 0; */
+    right: 0;
+    transform: translateX(100%);
+  z-index: 2;}
+
+  /* .focal-flowers img:nth-child(n + 4) {
+    top: calc(var(--random-top) * 100%);
+    left: calc(var(--random-left) * 100%);
+    z-index: 2;
+  } */
+  
+.filler-flowers {
+    position: relative;
+    width: 200px; /* Adjust the width as needed */
+    height: 200px; /* Adjust the height as needed */
+  }
+  
+  .filler-flowers img {
+    position: absolute;
+    width: 75%;
+    height: auto;
+    top: 40%;
+    left: -100%;
+    z-index: 3;
+  }
+
+  .filler-flowers img:nth-child(1) {
+    top: 0;
+    /* left: -10; */
+    /* z-index: 3; */
+  }
+  
+  .filler-flowers img:nth-child(2) {
+    /* top: 0; */
+    left: -50%;
+    /* transform: translateY(-50%); */
+    /* z-index: 1; */
+  }
+  
+  .filler-flowers img:nth-child(3) {
+    /* bottom: 10; */
+    left: 0%;
+    /* transform: translateX(50%); */
+    /* z-index: 1; */
+  }
+  
