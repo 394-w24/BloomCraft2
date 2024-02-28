@@ -21,7 +21,6 @@ import Cart from "./Cart";
 import FinalCart from "./FinalCart";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
-
 import VisualBouquet from "./VisualBouquet";
 
 const BouquetBuilder = ({ userPreferences }) => {
