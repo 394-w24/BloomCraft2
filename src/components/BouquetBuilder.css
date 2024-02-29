@@ -10,7 +10,7 @@
 }
 
 .App-header {
-  background-color: #FFDB58; /* Mustard color */
+  background-color: #ffdb58; /* Mustard color */
   min-height: 5vh;
   display: flex;
   flex-direction: row; /* Horizontal bar */

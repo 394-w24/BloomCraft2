@@ -204,11 +204,14 @@ const BouquetBuilder = ({ userPreferences }) => {
               alignItems: "center",
             }}
           >
-            <FlowerTypeButton
-              flowerType={selectedFlowerType}
-              setFlowerType={setSelectedFlowerType}
-              value="Filler"
-            />
+            <div>
+              <FlowerTypeButton
+                flowerType={selectedFlowerType}
+                setFlowerType={setSelectedFlowerType}
+                value="Filler"
+              />
+            </div>
+
             <FlowerTypeButton
               flowerType={selectedFlowerType}
               setFlowerType={setSelectedFlowerType}
@@ -248,14 +251,18 @@ const BouquetBuilder = ({ userPreferences }) => {
               fillerList={fillerFlowers}
               foliageList={foliageFlowers}
             />
-
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => navigate("/quiz")}
-            >
-              Start Quiz
-            </Button>
+            <div>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => navigate("/quiz")}
+                style={{
+                  display: "flex",
+                }}
+              >
+                Start Quiz
+              </Button>
+            </div>
 
             <FlowerShop
               // flowerList={dummyData["flowers"]}
