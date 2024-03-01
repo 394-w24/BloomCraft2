@@ -34,6 +34,9 @@ const BouquetBuilder = ({ userPreferences }) => {
 
   const [userPreferencesFlowers, setUserPreferencesFlowers] = useState([]);
 
+  const [selectedNote, setSelectedNote] = useState("");
+  const [customNote, setCustomNote] = useState("");
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -177,19 +180,28 @@ const BouquetBuilder = ({ userPreferences }) => {
 
       {cartView ? (
         <>
-          <ArrowBackIcon
-            style={{
-              left: "10",
-              top: "10vh",
-              position: "absolute",
-              scale: "1.5",
-            }}
+          <IconButton
+            color="inherit"
             onClick={() => setCartView(false)}
-          />
+            style={{
+              left: "1.5vh",
+              top: "12vh",
+              position: "absolute",
+            }}>
+            <ArrowBackIcon
+              style={{
+                scale: "1.5",
+              }}
+            />
+          </IconButton>
           <FinalCart
             focalFlowers={focalFlowers}
             fillerFlowers={fillerFlowers}
             foliageFlowers={foliageFlowers}
+            selectedNote={selectedNote}
+            setSelectedNote={setSelectedNote}
+            customNote={customNote}
+            setCustomNote={setCustomNote}
           />
           <b
             style={{ fontSize: "1.5rem" }}
