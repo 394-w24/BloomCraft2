@@ -109,11 +109,11 @@ const BouquetBuilder = ({ userPreferences }) => {
       sum += flower.price * flower.quantity;
     });
     setTotalPrice(sum);
-    console.log(totalPrice);
+    // console.log(totalPrice);
 
-    console.log(focalFlowers);
-    console.log(fillerFlowers);
-    console.log(foliageFlowers);
+    // console.log(focalFlowers);
+    // console.log(fillerFlowers);
+    // console.log(foliageFlowers);
   };
 
   const updateQuantity = (index, newQuantity) => {
