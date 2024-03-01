@@ -30,6 +30,7 @@ const BouquetBuilder = ({ userPreferences }) => {
   const [foliageFlowers, setFoliageFlowers] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [cartView, setCartView] = useState(false);
+  const [bouquetSize, setBouquetSize] = useState("Small");
 
   const [userPreferencesFlowers, setUserPreferencesFlowers] = useState([]);
 
@@ -196,6 +197,7 @@ const BouquetBuilder = ({ userPreferences }) => {
         </>
       ) : (
         <>
+          <BouquetSizeSelector bouquetSizeSelection={bouquetSize} setBouquetSize={setBouquetSize} />
           <div
             className="flower-type-button-container"
             style={{
@@ -250,6 +252,7 @@ const BouquetBuilder = ({ userPreferences }) => {
               focalList={focalFlowers}
               fillerList={fillerFlowers}
               foliageList={foliageFlowers}
+              bouquetSize={bouquetSize}
             />
             <div>
               <Button

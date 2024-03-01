@@ -1,12 +1,12 @@
 import "./VisualBouquet.css";
-const VisualBouquet = ({ focalList, fillerList, foliageList }) => {
+const VisualBouquet = ({ focalList, fillerList, foliageList, bouquetSize }) => {
   // helper for renderFLowerList - renders N flowers based on flower.quantity
   const renderQuantityFlowers = (flower) => {
     const flowerIcons = [];
     for (let i = 0; i < flower.quantity; i++) {
       flowerIcons.push(
         <img
-          style={{top: `${Math.floor(i / 3) * 10}px`}}
+          style={{top: `${Math.floor(i / 3) * 40}px`}}
           src={`/photos/small_flowers/${flower.photoName}`}
           alt={flower.name}
           className="vb-flower-image"
@@ -26,9 +26,9 @@ const VisualBouquet = ({ focalList, fillerList, foliageList }) => {
 
   return (
     <div className="visual-bouquet">
-      <div className="focal-flowers">{renderFlowerList(focalList)}</div>
-      <div className="filler-flowers">{renderFlowerList(fillerList)}</div>
-      <div className="foliage-flowers">{renderFlowerList(foliageList)}</div>
+      <div className={`focal-flowers ${bouquetSize}`}>{renderFlowerList(focalList)}</div>
+      <div className={`filler-flowers ${bouquetSize}`}>{renderFlowerList(fillerList)}</div>
+      <div className={`foliage-flowers ${bouquetSize}`}>{renderFlowerList(foliageList)}</div>
     </div>
   );
 };

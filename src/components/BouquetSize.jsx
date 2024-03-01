@@ -1,8 +1,8 @@
 // could use some tidying up, but it works
 const bouquetSizes = {
-    Small: "Small",
-    Medium: "Medium",
-    Large: "Large",
+    Small: "small",
+    Medium: "medium",
+    Large: "large",
   };
 
 const BouquetSizeButton = ({ bouquetSize, bouquetSizeSelection, setBouquetSize }) => (
