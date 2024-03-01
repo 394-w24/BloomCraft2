@@ -1,4 +1,4 @@
-const FlowerShopItem = ({ flower, flowerTypeList, setFlowerTypeList, calculatePrice}) => {
+const FlowerShopItem = ({ flower, flowerTypeList, setFlowerTypeList, calculatePrice, updateTotalQuantity }) => {
   // Determine the icon based on the flower's category
   // let iconClassName;
   // switch (flower.type.toLowerCase()) {
@@ -32,6 +32,7 @@ const FlowerShopItem = ({ flower, flowerTypeList, setFlowerTypeList, calculatePr
       // console.log(flowerTypeList);
       // for some reason, this breaks when calculatePrice is missing
       calculatePrice();
+      updateTotalQuantity();
     }}>
       {/* <i className={iconClassName} style={{ fontSize: "3rem" }}></i> */}
       <img src={`/photos/small_flowers/${flower.photoName}`} alt={flower.name} style={{ width: "100px", height: "100px", marginBottom: "10px" }} />

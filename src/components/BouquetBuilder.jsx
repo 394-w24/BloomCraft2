@@ -31,8 +31,13 @@ const BouquetBuilder = ({ userPreferences }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [cartView, setCartView] = useState(false);
   const [bouquetSize, setBouquetSize] = useState("Small");
+  const [flowerNumber, setFlowerNumber] = useState(0);
+  const [flowerLimit, setFlowerLimit] = useState(0);
 
   const [userPreferencesFlowers, setUserPreferencesFlowers] = useState([]);
+
+  const [selectedNote, setSelectedNote] = useState("");
+  const [customNote, setCustomNote] = useState("");
 
   const navigate = useNavigate();
 
@@ -148,9 +153,38 @@ const BouquetBuilder = ({ userPreferences }) => {
     }
   };
 
+  const updateTotalQuantity = () => {
+    let sum = 0;
+    focalFlowers.forEach((flower) => {
+      sum += flower.quantity;
+    });
+    fillerFlowers.forEach((flower) => {
+      sum += flower.quantity;
+    });
+    foliageFlowers.forEach((flower) => {
+      sum += flower.quantity;
+    });
+    setFlowerNumber(sum);
+  };
+
+  const updateFlowerLimit = () => {
+    if (bouquetSize === "Small") {
+      setFlowerLimit(6);
+    } else if (bouquetSize === "Medium") {
+      setFlowerLimit(12);
+    } else {
+      setFlowerLimit(18);
+    }
+  };
+
   useEffect(() => {
     calculatePrice();
   }, [focalFlowers, fillerFlowers, foliageFlowers]);
+
+  useEffect(() => {
+    updateTotalQuantity();
+    updateFlowerLimit();
+  }, [focalFlowers, fillerFlowers, foliageFlowers, bouquetSize]);
 
   return (
     <div className="App">
@@ -177,19 +211,28 @@ const BouquetBuilder = ({ userPreferences }) => {
 
       {cartView ? (
         <>
-          <ArrowBackIcon
-            style={{
-              left: "10",
-              top: "10vh",
-              position: "absolute",
-              scale: "1.5",
-            }}
+          <IconButton
+            color="inherit"
             onClick={() => setCartView(false)}
-          />
+            style={{
+              left: "1.5vh",
+              top: "12vh",
+              position: "absolute",
+            }}>
+            <ArrowBackIcon
+              style={{
+                scale: "1.5",
+              }}
+            />
+          </IconButton>
           <FinalCart
             focalFlowers={focalFlowers}
             fillerFlowers={fillerFlowers}
             foliageFlowers={foliageFlowers}
+            selectedNote={selectedNote}
+            setSelectedNote={setSelectedNote}
+            customNote={customNote}
+            setCustomNote={setCustomNote}
           />
           <b
             style={{ fontSize: "1.5rem" }}
@@ -236,6 +279,11 @@ const BouquetBuilder = ({ userPreferences }) => {
             }
             updateQuantity={updateQuantity}
           />
+          {flowerNumber > flowerLimit && (
+            <p style={{ color: "red" }}>
+              {`You have exceeded the limit of ${flowerLimit} flowers`}
+            </p>
+          )}
           <b>{`Total Price: $${totalPrice}.00`}</b>
 
           <IconButton
@@ -286,6 +334,7 @@ const BouquetBuilder = ({ userPreferences }) => {
                   : setFoliageFlowers
               }
               calculatePrice={calculatePrice}
+              updateTotalQuantity={updateTotalQuantity}
             />
           </div>
         </>
