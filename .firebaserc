@@ -6,10 +6,10 @@
     "bloomcrafter-fbd57": {
       "hosting": {
         "dev": [
-          "bloomcrafter-dev.com"
+          "bloomcrafter-dev"
         ],
         "main": [
-          "bloomcrafter-fbd57.web.app"
+          "bloomcrafter-fbd57"
         ]
       }
     }
