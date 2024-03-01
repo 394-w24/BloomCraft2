@@ -16,9 +16,8 @@ const FinalCart = ({ occasion, focalFlowers, fillerFlowers, foliageFlowers }) =>
 
   
 
-  const editableNotes = ["Happy [Holiday]! Wishing you a joyful celebration filled with love, laughter, and flowers.",
-                      "May this [Holiday] be filled with happiness, good times, and beautiful blooms.",
-                      "Wishing you and your loved ones a [Holiday] season filled with warmth and the fragrance of fresh flowers.",
+  const editableNotes = [
+                      "Happy Birthday! Wishing you a day filled with love, laughter, and joy.",
                       "Let's add some color to your day! Enjoy these vibrant flowers and let's have some fun.",
                       "Life is too short to not enjoy beautiful flowers. Here's a bouquet to brighten your mood!",
                       "Sending you flowers to remind you to take a moment to laugh and enjoy the little things in life.",
