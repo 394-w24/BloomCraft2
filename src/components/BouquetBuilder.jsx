@@ -218,7 +218,8 @@ const BouquetBuilder = ({ userPreferences }) => {
               left: "1.5vh",
               top: "12vh",
               position: "absolute",
-            }}>
+            }}
+          >
             <ArrowBackIcon
               style={{
                 scale: "1.5",
@@ -240,7 +241,44 @@ const BouquetBuilder = ({ userPreferences }) => {
         </>
       ) : (
         <>
-          <BouquetSizeSelector bouquetSizeSelection={bouquetSize} setBouquetSize={setBouquetSize} />
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              marginBottom: "20px",
+            }}
+          >
+            <Typography
+              variant="subtitle1"
+              style={{
+                marginRight: "8px",
+                fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
+                fontSize: "1.1rem",
+                fontWeight: 1000,
+              }}
+            >
+              If you have no idea what to pick, try the quiz!
+            </Typography>
+
+            <div>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => navigate("/quiz")}
+                style={{
+                  display: "flex",
+                }}
+              >
+                Start Quiz
+              </Button>
+            </div>
+          </div>
+
+          <BouquetSizeSelector
+            bouquetSizeSelection={bouquetSize}
+            setBouquetSize={setBouquetSize}
+          />
           <div
             className="flower-type-button-container"
             style={{
@@ -302,18 +340,6 @@ const BouquetBuilder = ({ userPreferences }) => {
               foliageList={foliageFlowers}
               bouquetSize={bouquetSize}
             />
-            <div>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={() => navigate("/quiz")}
-                style={{
-                  display: "flex",
-                }}
-              >
-                Start Quiz
-              </Button>
-            </div>
 
             <FlowerShop
               // flowerList={dummyData["flowers"]}
