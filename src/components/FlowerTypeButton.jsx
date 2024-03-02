@@ -11,7 +11,8 @@ const FlowerTypeButton = ({ flowerType, setFlowerType, value }) => {
       <img className="flower-type-icon"
         src={value === "Focal" ? "/icons/focal.png"
           : value === "Filler" ? "/icons/filler.png"
-            : "/icons/foliage.png"}
+            : value === "Foliage" ? "/icons/foliage.png"
+              : "/icons/container.svg"} 
         alt={value}
       />
     </div>

@@ -311,6 +311,47 @@ const dummyData = {
             "meaning": "friendship, encouragement",
             "occasion": ["easter"],
             "shoppingFor": []
+        }, 
+        // New container options
+        {
+            "name": "White Round Vase",
+            "type": "Container",
+            "unit": "piece",
+            "price": 10.00,
+            "priceRange": "$$",
+            "photoName": "vase-white-round.png",
+            "occasion": ["all"],
+            "shoppingFor": ["all"]
+        },
+        {
+            "name": "White Skinny Vase",
+            "type": "Container",
+            "unit": "piece",
+            "price": 12.00,
+            "priceRange": "$$$",
+            "photoName": "vase-white-skinny.png",
+            "occasion": ["all"],
+            "shoppingFor": ["all"]
+        },
+        {
+            "name": "Brown Wrap",
+            "type": "Container",
+            "unit": "piece",
+            "price": 2.00,
+            "priceRange": "$",
+            "photoName": "wrap-brown.png",
+            "occasion": ["all"],
+            "shoppingFor": ["all"]
+        },
+        {
+            "name": "White Wrap",
+            "type": "Container",
+            "unit": "piece",
+            "price": 2.00,
+            "priceRange": "$",
+            "photoName": "wrap-white.png",
+            "occasion": ["all"],
+            "shoppingFor": ["all"]
         }
     ]
 }

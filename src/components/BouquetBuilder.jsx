@@ -28,6 +28,8 @@ const BouquetBuilder = ({ userPreferences }) => {
   const [focalFlowers, setFocalFlowers] = useState([]);
   const [fillerFlowers, setFillerFlowers] = useState([]);
   const [foliageFlowers, setFoliageFlowers] = useState([]);
+  const [containerOptions, setContainerOptions] = useState([]);
+  const [selectedContainer, setSelectedContainer] = useState("");
   const [totalPrice, setTotalPrice] = useState(0);
   const [cartView, setCartView] = useState(false);
   const [bouquetSize, setBouquetSize] = useState("Small");
@@ -66,6 +68,7 @@ const BouquetBuilder = ({ userPreferences }) => {
     const newFocalFlowers = [];
     const newFillerFlowers = [];
     const newFoliageFlowers = [];
+    const newContainerOptions = [];
 
     flowers.forEach((flower) => {
       const newFlower = { ...flower, quantity: 1 }; // Prepare the flower object with quantity
@@ -78,6 +81,9 @@ const BouquetBuilder = ({ userPreferences }) => {
           break;
         case "Foliage":
           newFoliageFlowers.push(newFlower);
+          break;
+        case "Container":
+          newContainerOptions.push(newFlower);
           break;
         default:
           console.log("Unknown flower type:", flower.type);
@@ -93,6 +99,10 @@ const BouquetBuilder = ({ userPreferences }) => {
       ...foliageFlowers,
       ...newFoliageFlowers,
     ]);
+    setContainerOptions((containerOptions) => [
+      ...containerOptions,
+      ...newContainerOptions,
+    ]);
 
     calculatePrice();
   };
@@ -106,6 +116,9 @@ const BouquetBuilder = ({ userPreferences }) => {
       sum += flower.price * flower.quantity;
     });
     foliageFlowers.forEach((flower) => {
+      sum += flower.price * flower.quantity;
+    });
+    containerOptions.forEach((flower) => {
       sum += flower.price * flower.quantity;
     });
     setTotalPrice(sum);
@@ -139,7 +152,7 @@ const BouquetBuilder = ({ userPreferences }) => {
       } else {
         setFillerFlowers(updatedFlowers);
       }
-    } else {
+    } else if (selectedFlowerType === "Foliage") {
       const updatedFlowers = [...foliageFlowers];
       updatedFlowers[index].quantity = newQuantity;
       if (newQuantity === 0) {
@@ -149,6 +162,17 @@ const BouquetBuilder = ({ userPreferences }) => {
         setFoliageFlowers(filteredFlowers);
       } else {
         setFoliageFlowers(updatedFlowers);
+      }
+    } else {
+      const updatedFlowers = [...containerOptions];
+      updatedFlowers[index].quantity = newQuantity;
+      if (newQuantity === 0) {
+        const filteredFlowers = updatedFlowers.filter(
+          (flower, i) => i !== index
+        );
+        setContainerOptions(filteredFlowers);
+      } else {
+        setContainerOptions(updatedFlowers);
       }
     }
   };
@@ -162,6 +186,9 @@ const BouquetBuilder = ({ userPreferences }) => {
       sum += flower.quantity;
     });
     foliageFlowers.forEach((flower) => {
+      sum += flower.quantity;
+    });
+    containerOptions.forEach((flower) => {
       sum += flower.quantity;
     });
     setFlowerNumber(sum);
@@ -179,12 +206,12 @@ const BouquetBuilder = ({ userPreferences }) => {
 
   useEffect(() => {
     calculatePrice();
-  }, [focalFlowers, fillerFlowers, foliageFlowers]);
+  }, [focalFlowers, fillerFlowers, foliageFlowers, containerOptions]);
 
   useEffect(() => {
     updateTotalQuantity();
     updateFlowerLimit();
-  }, [focalFlowers, fillerFlowers, foliageFlowers, bouquetSize]);
+  }, [focalFlowers, fillerFlowers, foliageFlowers, containerOptions, bouquetSize]);
 
   return (
     <div className="App">
@@ -230,6 +257,7 @@ const BouquetBuilder = ({ userPreferences }) => {
             focalFlowers={focalFlowers}
             fillerFlowers={fillerFlowers}
             foliageFlowers={foliageFlowers}
+            containerOptions={containerOptions}
             selectedNote={selectedNote}
             setSelectedNote={setSelectedNote}
             customNote={customNote}
@@ -305,6 +333,11 @@ const BouquetBuilder = ({ userPreferences }) => {
               setFlowerType={setSelectedFlowerType}
               value="Foliage"
             />
+            <FlowerTypeButton
+              flowerType={selectedFlowerType}
+              setFlowerType={setSelectedFlowerType}
+              value="Container"
+            />
           </div>
           <h3>{`${selectedFlowerType} Flowers `}</h3>
           <Cart
@@ -313,7 +346,9 @@ const BouquetBuilder = ({ userPreferences }) => {
                 ? focalFlowers
                 : selectedFlowerType === "Filler"
                 ? fillerFlowers
-                : foliageFlowers
+                : selectedFlowerType === "Foliage"
+                ? foliageFlowers
+                : containerOptions
             }
             updateQuantity={updateQuantity}
           />
@@ -338,6 +373,7 @@ const BouquetBuilder = ({ userPreferences }) => {
               focalList={focalFlowers}
               fillerList={fillerFlowers}
               foliageList={foliageFlowers}
+              continerList={containerOptions}
               bouquetSize={bouquetSize}
             />
 
@@ -350,14 +386,18 @@ const BouquetBuilder = ({ userPreferences }) => {
                   ? focalFlowers
                   : selectedFlowerType === "Filler"
                   ? fillerFlowers
-                  : foliageFlowers
+                  : selectedFlowerType === "Foliage"
+                  ? foliageFlowers
+                  : containerOptions
               }
               setTypeList={
                 selectedFlowerType === "Focal"
                   ? setFocalFlowers
                   : selectedFlowerType === "Filler"
                   ? setFillerFlowers
-                  : setFoliageFlowers
+                  : selectedFlowerType === "Foliage"
+                  ? setFoliageFlowers
+                  : setContainerOptions
               }
               calculatePrice={calculatePrice}
               updateTotalQuantity={updateTotalQuantity}
