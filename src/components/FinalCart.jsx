@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import FinalCartFlowerType from "./FinalCartFlowerType";
 
-const FinalCart = ({ occasion, focalFlowers, fillerFlowers, foliageFlowers, selectedNote, setSelectedNote, customNote, setCustomNote }) => {
+const FinalCart = ({ occasion, focalFlowers, fillerFlowers, foliageFlowers, containerOptions, selectedNote, setSelectedNote, customNote, setCustomNote }) => {
 
 
   const handleSelectNote = (event) => {
