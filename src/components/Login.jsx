@@ -6,9 +6,9 @@ import "./Login.css"
 function Login() {
     const navigate = useNavigate(); // Initialize useNavigate hook
 
-    const handleProceedAsGuest = () => {
-        // Navigate to the homepage when "Proceed as Guest" button is clicked
-        navigate('/bouquetbuilder');
+    const handleTakeQuiz = () => {
+        // Navigate to the quiz page when "Take Our Quiz" button is clicked
+        navigate('/quiz');
     };
 
     return (
@@ -16,15 +16,10 @@ function Login() {
            <img className="login-img" src={logo} style={{ width: "8rem" }}></img>
 
 
-            <h2 className="login-h2">Bloomcrafter Login</h2>
-            {/* for now, we're just gonna log in as guest anyways */}
-            <form className="login-form" onSubmit={handleProceedAsGuest}>
-                <input className="login-input" type="text" name="username" placeholder="Username" required /><br />
-                <input className="login-input" type="password" name="password" placeholder="Password" required /><br />
-                <input className="login-input" type="submit" value="Login" />
-            </form>
+            <h2 className="login-h2">Create Joy, One Bouquet at a Time!</h2>
+            <p className="quiz-text">Not sure where to start? Let us help! Take our quiz to get started.</p>
             <div className="proceed-as-guest">
-                <button className="login-button" onClick={handleProceedAsGuest}>Proceed as Guest</button>
+                <button className="login-button" onClick={handleTakeQuiz}>Take Our Quiz</button>
             </div>
         </div>
     );
