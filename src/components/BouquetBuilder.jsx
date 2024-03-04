@@ -188,9 +188,6 @@ const BouquetBuilder = ({ userPreferences }) => {
     foliageFlowers.forEach((flower) => {
       sum += flower.quantity;
     });
-    containerOptions.forEach((flower) => {
-      sum += flower.quantity;
-    });
     setFlowerNumber(sum);
   };
 
@@ -339,7 +336,7 @@ const BouquetBuilder = ({ userPreferences }) => {
               value="Container"
             />
           </div>
-          <h3>{`${selectedFlowerType} Flowers `}</h3>
+          <h3>{`${selectedFlowerType === "Container" ? "Containers" : selectedFlowerType + " Flowers"}`}</h3>
           <Cart
             list={
               selectedFlowerType === "Focal"
