@@ -22,6 +22,7 @@ import FinalCart from "./FinalCart";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 import VisualBouquet from "./VisualBouquet";
+import GenerateNotePage from "./GenerateNotePage";
 
 const BouquetBuilder = ({ userPreferences }) => {
   const [selectedFlowerType, setSelectedFlowerType] = useState("Focal");
@@ -36,11 +37,15 @@ const BouquetBuilder = ({ userPreferences }) => {
   const [flowerNumber, setFlowerNumber] = useState(0);
   const [flowerLimit, setFlowerLimit] = useState(0);
 
+  
+
   const [userPreferencesFlowers, setUserPreferencesFlowers] = useState([]);
 
   const [selectedNote, setSelectedNote] = useState("");
   const [customNote, setCustomNote] = useState("");
 
+  const [generateNoteView, setGenerateNoteView] = useState(false);
+  const [notes, setNotes] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -229,34 +234,41 @@ const BouquetBuilder = ({ userPreferences }) => {
       </AppBar>
 
       {cartView ? (
-        <>
-          <IconButton
-            color="inherit"
-            onClick={() => setCartView(false)}
-            style={{
-              left: "1.5vh",
-              top: "12vh",
-              position: "absolute",
-            }}
-          >
-            <ArrowBackIcon
+        generateNoteView ? (
+          <GenerateNotePage setNote={setNotes} setGenerateNoteView={setGenerateNoteView}/>
+        ) : (
+          <>
+            <IconButton
+              color="inherit"
+              onClick={() => setCartView(false)}
               style={{
-                scale: "1.5",
+                left: "1.5vh",
+                top: "12vh",
+                position: "absolute",
               }}
+            >
+              <ArrowBackIcon
+                style={{
+                  scale: "1.5",
+                }}
+              />
+            </IconButton>
+            <FinalCart
+              focalFlowers={focalFlowers}
+              fillerFlowers={fillerFlowers}
+              foliageFlowers={foliageFlowers}
+              containerOptions={containerOptions}
+              totalPrice={totalPrice}
+              notes={notes}
+              setGenerateNoteView={setGenerateNoteView}
+            // selectedNote={selectedNote}
+            // setSelectedNote={setSelectedNote}
+            // customNote={customNote}
+            // setCustomNote={setCustomNote}
             />
-          </IconButton>
-          <FinalCart
-            focalFlowers={focalFlowers}
-            fillerFlowers={fillerFlowers}
-            foliageFlowers={foliageFlowers}
-            containerOptions={containerOptions}
-            totalPrice={totalPrice}
-          // selectedNote={selectedNote}
-          // setSelectedNote={setSelectedNote}
-          // customNote={customNote}
-          // setCustomNote={setCustomNote}
-          />
-        </>
+          </>
+
+        )
       ) : (
         <>
           <div
