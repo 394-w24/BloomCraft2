@@ -21,8 +21,12 @@ const FinalCart = ({ occasion, focalFlowers, fillerFlowers, foliageFlowers, cont
         <b style={{ fontSize: "1.5rem" }}>{`Total Price: $${totalPrice}.00`}</b>
       </div>
       <div>
-        <button style={{ marginTop: "15px", marginBottom: "15px" }} onClick={() => setShowNoteComponent(true)}>Add a Note</button>
+        <button style={{ marginTop: "15px", marginBottom: "15px", background: "rgb(213, 240, 164)", border: "none", borderRadius: "20px", padding: "5px 30px"  }} onClick={() => setShowNoteComponent(true)}>Add a Note</button>
         {showNoteComponent && <NoteComponent notes={notes} setGenerateNoteView={setGenerateNoteView} />}
+      </div>
+      <div>
+      <button style={{ marginBottom: "20px", background: "rgb(213, 240, 164)", border: "none", borderRadius: "20px", padding: "5px 30px", fontWeight: "550"}}
+        >Complete Transaction</button>
       </div>
     </div>
   );
