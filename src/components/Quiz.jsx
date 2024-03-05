@@ -21,7 +21,7 @@ const Quiz = ({ setUserPreferences }) => {
     if (value === "Upcoming Holiday") {
       setQuestionNumber(3);
     } else {
-      setQuestionNumber(4);
+      setQuestionNumber(5);
     }
   };
 
@@ -29,6 +29,11 @@ const Quiz = ({ setUserPreferences }) => {
     // setHoliday(value);
     setShoppingFor("all");
     setOccasion(value);
+    setQuestionNumber(5);
+  };
+
+  const handleSize = (value) => {
+    // setHoliday(value);
     setQuestionNumber(4);
   };
 
@@ -91,6 +96,23 @@ const Quiz = ({ setUserPreferences }) => {
               Valentine’s
             </Button>
             <Button onClick={() => handleHoliday("easter")}>Easter</Button>
+          </div>
+        </div>
+      )}
+      {questionNumber === 5 && (
+        <div>
+          What bouquet size would you like to start with? You can change your
+          selection later.
+          <div className="button-group">
+            <Button onClick={() => handleSize("Small")}>
+              Small (6 flowers)
+            </Button>
+            <Button onClick={() => handleSize("Medium")}>
+              Medium (12 flowers)
+            </Button>
+            <Button onClick={() => handleSize("Large")}>
+              Large (18 lowers)
+            </Button>
           </div>
         </div>
       )}
