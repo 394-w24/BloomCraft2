@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen} from "@testing-library/react";
 import App from "./App";
 import Login from "./components/Login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -7,7 +7,8 @@ import BouquetBuilder from "./components/BouquetBuilder";
 describe("trivial tests", () => {
   test("Login page renders", () => {
     render(<App />);
-    expect(screen.getByText("Bloomcrafter Login")).toBeDefined();
+    expect(screen.getByText("Build Your Own Bouquet")).toBeDefined();
+
   });
 
   test("Total price is 0 at bouquetbuilder", () => {
