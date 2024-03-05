@@ -122,11 +122,6 @@ const BouquetBuilder = ({ userPreferences }) => {
       sum += flower.price * flower.quantity;
     });
     setTotalPrice(sum);
-    // console.log(totalPrice);
-
-    // console.log(focalFlowers);
-    // console.log(fillerFlowers);
-    // console.log(foliageFlowers);
   };
 
   const updateQuantity = (index, newQuantity) => {
@@ -256,10 +251,10 @@ const BouquetBuilder = ({ userPreferences }) => {
             foliageFlowers={foliageFlowers}
             containerOptions={containerOptions}
             totalPrice={totalPrice}
-            // selectedNote={selectedNote}
-            // setSelectedNote={setSelectedNote}
-            // customNote={customNote}
-            // setCustomNote={setCustomNote}
+          // selectedNote={selectedNote}
+          // setSelectedNote={setSelectedNote}
+          // customNote={customNote}
+          // setCustomNote={setCustomNote}
           />
         </>
       ) : (
@@ -269,7 +264,7 @@ const BouquetBuilder = ({ userPreferences }) => {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              marginBottom: "20px",
+              // marginBottom: "20px",
             }}
           >
             <Typography
@@ -281,17 +276,15 @@ const BouquetBuilder = ({ userPreferences }) => {
                 fontWeight: 1000,
               }}
             >
-              If you have no idea what to pick, try the quiz!
+              Need some help?
             </Typography>
 
-            <div>
+            <div style={{ width: "10rem" }}>
               <Button
+                className="start-quiz-button"
                 variant="contained"
                 color="primary"
                 onClick={() => navigate("/quiz")}
-                style={{
-                  display: "flex",
-                }}
               >
                 Start Quiz
               </Button>
@@ -334,70 +327,77 @@ const BouquetBuilder = ({ userPreferences }) => {
               value="Container"
             />
           </div>
-          <h3>{`${selectedFlowerType === "Container" ? "Containers" : selectedFlowerType + " Flowers"}`}</h3>
+          <h3 style={{ marginBottom: "0" }}>{`${selectedFlowerType === "Container" ? "Containers" : selectedFlowerType + " Flowers"}`}</h3>
+          <i>
+            {selectedFlowerType === "Focal" ? "Focal flowers are the heart of your bouquet." :
+              selectedFlowerType === "Filler" ? "Filler flowers add texture, volume, and balance to your bouquet." :
+                selectedFlowerType === "Foliage" && "Foliage provides a beautiful backdrop for your blooms."}
+          </i>
           <Cart
             list={
               selectedFlowerType === "Focal"
                 ? focalFlowers
                 : selectedFlowerType === "Filler"
-                ? fillerFlowers
-                : selectedFlowerType === "Foliage"
-                ? foliageFlowers
-                : containerOptions
+                  ? fillerFlowers
+                  : selectedFlowerType === "Foliage"
+                    ? foliageFlowers
+                    : containerOptions
             }
             updateQuantity={updateQuantity}
           />
           {flowerNumber > flowerLimit && (
-            <p style={{ color: "red" }}>
+            <b style={{ color: "red", marginBottom: "0.3rem" }}>
               {`You have exceeded the limit of ${flowerLimit} flowers`}
-            </p>
+            </b>
           )}
-          <b>{`Total Price: $${totalPrice}.00`}</b>
-
-          <IconButton
-            color="inherit"
-            aria-label="cart"
-            onClick={() => setCartView(!cartView)}
-          >
-            <img src="/icons/flower.png" style={{ width: "2rem" }}></img> View
-            cart
-          </IconButton>
+          <br />
+          <VisualBouquet
+            focalList={focalFlowers}
+            fillerList={fillerFlowers}
+            foliageList={foliageFlowers}
+            continerList={containerOptions}
+            bouquetSize={bouquetSize}
+          />
 
           <div>
-            <VisualBouquet
-              focalList={focalFlowers}
-              fillerList={fillerFlowers}
-              foliageList={foliageFlowers}
-              continerList={containerOptions}
-              bouquetSize={bouquetSize}
-            />
+            <b>{`Total Price: $${totalPrice}.00`}</b>
 
-            <FlowerShop
-              // flowerList={dummyData["flowers"]}
-              flowerList={userPreferencesFlowers}
-              selectedFlowerType={selectedFlowerType}
-              typeList={
-                selectedFlowerType === "Focal"
-                  ? focalFlowers
-                  : selectedFlowerType === "Filler"
+            <IconButton
+              color="inherit"
+              aria-label="cart"
+              onClick={() => setCartView(!cartView)}
+            >
+              <img src="/icons/flower.png" style={{ width: "2rem" }}></img> View
+              cart
+            </IconButton>
+
+          </div>
+
+          <FlowerShop
+            // flowerList={dummyData["flowers"]}
+            flowerList={userPreferencesFlowers}
+            selectedFlowerType={selectedFlowerType}
+            typeList={
+              selectedFlowerType === "Focal"
+                ? focalFlowers
+                : selectedFlowerType === "Filler"
                   ? fillerFlowers
                   : selectedFlowerType === "Foliage"
-                  ? foliageFlowers
-                  : containerOptions
-              }
-              setTypeList={
-                selectedFlowerType === "Focal"
-                  ? setFocalFlowers
-                  : selectedFlowerType === "Filler"
+                    ? foliageFlowers
+                    : containerOptions
+            }
+            setTypeList={
+              selectedFlowerType === "Focal"
+                ? setFocalFlowers
+                : selectedFlowerType === "Filler"
                   ? setFillerFlowers
                   : selectedFlowerType === "Foliage"
-                  ? setFoliageFlowers
-                  : setContainerOptions
-              }
-              calculatePrice={calculatePrice}
-              updateTotalQuantity={updateTotalQuantity}
-            />
-          </div>
+                    ? setFoliageFlowers
+                    : setContainerOptions
+            }
+            calculatePrice={calculatePrice}
+            updateTotalQuantity={updateTotalQuantity}
+          />
         </>
       )}
     </div>

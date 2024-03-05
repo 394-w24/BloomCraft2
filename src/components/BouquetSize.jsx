@@ -18,10 +18,12 @@ const BouquetSizeButton = ({ bouquetSize, bouquetSizeSelection, setBouquetSize }
         <label
             className="btn btn-outline-dark btn-lg m-1 p-2"
             htmlFor={bouquetSize}
-            style={{ width: "150px", textAlign: "center" }}
+            style={{ width: "75px", textAlign: "center",
+            // borderRadius: "25px"
+             }}
             data-cy={bouquetSize}
         >
-            {bouquetSize}
+            {bouquetSize === "Small" ? "S" : bouquetSize === "Medium" ? "M" : "L"}
             <i style={{ fontSize: 'small' }}> {bouquetSize === "Small" ? "(6)" : bouquetSize === "Medium" ? "(12)" : "(18)"}
             </i>
         </label>
@@ -29,7 +31,8 @@ const BouquetSizeButton = ({ bouquetSize, bouquetSizeSelection, setBouquetSize }
 );
 
 const BouquetSizeSelector = ({ bouquetSizeSelection, setBouquetSize }) => (
-    <div className="d-flex btn-group justify-content-center align-items-center m-2">
+    <div>
+    <div className="d-flex btn-group justify-content-center align-items-center">
         {Object.keys(bouquetSizes).map((bouquetSize) => (
             <BouquetSizeButton
                 key={bouquetSize}
@@ -38,6 +41,16 @@ const BouquetSizeSelector = ({ bouquetSizeSelection, setBouquetSize }) => (
                 setBouquetSize={setBouquetSize}
             />
         ))}
+    </div>
+    <p className="text-center">
+        <i>
+        You have selected a <b>{bouquetSizeSelection === "Small" ? "small" :
+        bouquetSizeSelection === "Medium" ? "medium" :
+        "large"}</b> bouquet which will include <b>{
+            bouquetSizeSelection === "Small" ? "6" :
+            bouquetSizeSelection === "Medium" ? "12" : "18"}</b> flowers.
+        </i>
+    </p>
     </div>
 );
 
