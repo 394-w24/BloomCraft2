@@ -255,14 +255,12 @@ const BouquetBuilder = ({ userPreferences }) => {
             fillerFlowers={fillerFlowers}
             foliageFlowers={foliageFlowers}
             containerOptions={containerOptions}
-            selectedNote={selectedNote}
-            setSelectedNote={setSelectedNote}
-            customNote={customNote}
-            setCustomNote={setCustomNote}
+            totalPrice={totalPrice}
+            // selectedNote={selectedNote}
+            // setSelectedNote={setSelectedNote}
+            // customNote={customNote}
+            // setCustomNote={setCustomNote}
           />
-          <b
-            style={{ fontSize: "1.5rem" }}
-          >{`Total Price: $${totalPrice}.00`}</b>
         </>
       ) : (
         <>
