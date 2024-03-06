@@ -186,11 +186,13 @@ const BouquetBuilder = ({
   useEffect(() => {
     console.log("Template Preferences in BouquetBuilder:", templatePreferences);
     if (templatePreferences) {
+      console.log("Creating template with preferences:", templatePreferences)
       const { shoppingFor, occasion, size } = templatePreferences;
       createTemplate(shoppingFor, occasion, size);
     }
 
     if (userPreferences) {
+      console.log("User Preferences in BouquetBuilder:", userPreferences);
       const filteredFlowers = dummyData["flowers"].filter(
         (flower) =>
           (userPreferences.occasion === "all" ||
@@ -198,6 +200,7 @@ const BouquetBuilder = ({
           (userPreferences.shoppingFor === "all" ||
             flower.shoppingFor.includes(userPreferences.shoppingFor))
       );
+      console.log(filteredFlowers);
       setUserPreferencesFlowers(filteredFlowers);
     }
   }, [userPreferences, templatePreferences]);

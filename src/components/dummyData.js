@@ -320,8 +320,8 @@ const dummyData = {
             "price": 10.00,
             "priceRange": "$$",
             "photoName": "vase-white-round.png",
-            "occasion": ["all"],
-            "shoppingFor": ["all"]
+            "occasion": ["valentines", "easter", "romance", "appreciation", "apology", "fun"],
+            "shoppingFor": ["partner", "familyMember", "friend"]
         },
         {
             "name": "White Skinny Vase",
@@ -330,8 +330,8 @@ const dummyData = {
             "price": 12.00,
             "priceRange": "$$$",
             "photoName": "vase-white-skinny.png",
-            "occasion": ["all"],
-            "shoppingFor": ["all"]
+            "occasion": ["valentines", "easter", "romance", "appreciation", "apology", "fun"],
+            "shoppingFor": ["partner", "familyMember", "friend"]
         },
         {
             "name": "Brown Wrap",
@@ -340,8 +340,8 @@ const dummyData = {
             "price": 2.00,
             "priceRange": "$",
             "photoName": "wrap-brown.png",
-            "occasion": ["all"],
-            "shoppingFor": ["all"]
+            "occasion": ["valentines", "easter", "romance", "appreciation", "apology", "fun"],
+            "shoppingFor": ["partner", "familyMember", "friend"]
         },
         {
             "name": "White Wrap",
@@ -350,8 +350,8 @@ const dummyData = {
             "price": 2.00,
             "priceRange": "$",
             "photoName": "wrap-white.png",
-            "occasion": ["all"],
-            "shoppingFor": ["all"]
+            "occasion": ["valentines", "easter", "romance", "appreciation", "apology", "fun"],
+            "shoppingFor": ["partner", "familyMember", "friend"]
         }
     ]
 }
