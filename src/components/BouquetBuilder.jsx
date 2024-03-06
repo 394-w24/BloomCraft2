@@ -143,6 +143,16 @@ const BouquetBuilder = ({
     setFocalFlowers(newFocalFlowers);
     setFillerFlowers(newFillerFlowers);
     setFoliageFlowers(newFoliageFlowers);
+    setContainerOptions([{
+      "name": "White Round Vase",
+      "type": "Container",
+      "unit": "piece",
+      "price": 10,
+      "priceRange": "$$",
+      "photoName": "vase-white-round.png",
+      "occasion": ["all"],
+      "shoppingFor": ["all"]
+  }])
 
     // Call calculatePrice to update the total price
     calculatePrice();
@@ -204,7 +214,7 @@ const BouquetBuilder = ({
       sum += flower.price * flower.quantity;
     });
     containerOptions.forEach((flower) => {
-      sum += flower.price * flower.quantity;
+      sum += flower.price;
     });
     setTotalPrice(sum);
   };
@@ -462,7 +472,7 @@ const BouquetBuilder = ({
             focalList={focalFlowers}
             fillerList={fillerFlowers}
             foliageList={foliageFlowers}
-            continerList={containerOptions}
+            containerList={containerOptions}
             bouquetSize={bouquetSize}
           />
 
