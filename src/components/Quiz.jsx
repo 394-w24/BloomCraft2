@@ -2,7 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 import "./Quiz.css";
-const Quiz = ({ setUserPreferences }) => {
+const Quiz = ({
+  setUserPreferences,
+  setTemplatePreferences,
+  setPreferredbouquetsize,
+}) => {
   const [questionNumber, setQuestionNumber] = useState(1);
   const [shoppingFor, setShoppingFor] = useState("");
   const [occasion, setOccasion] = useState("");
@@ -21,7 +25,7 @@ const Quiz = ({ setUserPreferences }) => {
     if (value === "Upcoming Holiday") {
       setQuestionNumber(3);
     } else {
-      setQuestionNumber(5);
+      setQuestionNumber(4);
     }
   };
 
@@ -29,17 +33,24 @@ const Quiz = ({ setUserPreferences }) => {
     // setHoliday(value);
     setShoppingFor("all");
     setOccasion(value);
-    setQuestionNumber(5);
-  };
-
-  const handleSize = (value) => {
-    // setHoliday(value);
     setQuestionNumber(4);
   };
 
-  const handleFinishQuiz = (useTemplate) => {
-    console.log(shoppingFor, occasion, useTemplate);
-    setUserPreferences({ shoppingFor, occasion, template: useTemplate });
+  const handleSize = (value) => {
+    console.log("handleSize called with value:", value);
+    console.log("Current values before setting templatePreferences:", {
+      shoppingFor,
+      occasion,
+      size: value,
+    });
+
+    setTemplatePreferences({ shoppingFor, occasion, size: value });
+    setPreferredbouquetsize(value);
+    navigate("/bouquetbuilder");
+  };
+
+  const handleFinishQuiz = () => {
+    setUserPreferences({ shoppingFor, occasion });
     navigate("/bouquetbuilder");
   };
 
@@ -82,7 +93,7 @@ const Quiz = ({ setUserPreferences }) => {
             </Button>
             <Button onClick={() => handleOccasion("apology")}>Apology</Button>
             <Button onClick={() => handleOccasion("fun")}>Fun</Button>
-            <Button onClick={() => handleOccasion("Upcoming Holiday")}>
+            <Button onClick={() => handleOccasion("upcoming holiday")}>
               Upcoming Holiday
             </Button>
           </div>
@@ -93,12 +104,35 @@ const Quiz = ({ setUserPreferences }) => {
           Which Holiday are you shopping for?
           <div className="button-group">
             <Button onClick={() => handleHoliday("valentines")}>
-              Valentine’s
+              Valentine's
             </Button>
             <Button onClick={() => handleHoliday("easter")}>Easter</Button>
           </div>
         </div>
       )}
+
+      {questionNumber === 4 && (
+        <div>
+          Would you like us to start you with a template?
+          <div className="button-group">
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => setQuestionNumber(5)}
+            >
+              Yes, start with a template
+            </Button>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={() => handleFinishQuiz(false)}
+            >
+              No, I will choose individually
+            </Button>
+          </div>
+        </div>
+      )}
+
       {questionNumber === 5 && (
         <div>
           What bouquet size would you like to start with? You can change your
@@ -111,28 +145,7 @@ const Quiz = ({ setUserPreferences }) => {
               Medium (12 flowers)
             </Button>
             <Button onClick={() => handleSize("Large")}>
-              Large (18 lowers)
-            </Button>
-          </div>
-        </div>
-      )}
-      {questionNumber === 4 && (
-        <div>
-          <div className="button-group">
-            Would you like us to start you with a template?
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => handleFinishQuiz(true)}
-            >
-              Yes, start with a template
-            </Button>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={() => handleFinishQuiz(false)}
-            >
-              No, I will choose individually
+              Large (18 flowers)
             </Button>
           </div>
         </div>

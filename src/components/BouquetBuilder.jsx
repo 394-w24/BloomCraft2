@@ -24,7 +24,11 @@ import { useNavigate } from "react-router-dom";
 import VisualBouquet from "./VisualBouquet";
 import GenerateNotePage from "./GenerateNotePage";
 
-const BouquetBuilder = ({ userPreferences }) => {
+const BouquetBuilder = ({
+  userPreferences,
+  templatePreferences,
+  preferredBouquetsize,
+}) => {
   const [selectedFlowerType, setSelectedFlowerType] = useState("Focal");
   const [focalFlowers, setFocalFlowers] = useState([]);
   const [fillerFlowers, setFillerFlowers] = useState([]);
@@ -33,11 +37,9 @@ const BouquetBuilder = ({ userPreferences }) => {
   const [selectedContainer, setSelectedContainer] = useState("");
   const [totalPrice, setTotalPrice] = useState(0);
   const [cartView, setCartView] = useState(false);
-  const [bouquetSize, setBouquetSize] = useState("Small");
+  const [bouquetSize, setBouquetSize] = useState(preferredBouquetsize);
   const [flowerNumber, setFlowerNumber] = useState(0);
   const [flowerLimit, setFlowerLimit] = useState(0);
-
-  
 
   const [userPreferencesFlowers, setUserPreferencesFlowers] = useState([]);
 
@@ -48,69 +50,147 @@ const BouquetBuilder = ({ userPreferences }) => {
   const [notes, setNotes] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const filteredFlowers = dummyData["flowers"].filter((flower) => {
-      return (
-        userPreferences.occasion === "all" ||
-        (flower.occasion.some(
-          (occasion) => occasion === userPreferences.occasion
-        ) &&
-          (userPreferences.shoppingFor === "all" ||
-            flower.shoppingFor.some(
-              (shoppingFor) => shoppingFor === userPreferences.shoppingFor
-            )))
-      );
-    });
+  const templates = {
+    partner: {
+      valentines: {
+        Focal: "Red Rose",
+        Filler: "Queen Anne's Lace",
+        Foliage: "Ruscus",
+      },
+      easter: { Focal: "Tulip", Filler: "Lavender", Foliage: "Huckleberry" },
+      romance: {
+        Focal: "Red Rose",
+        Filler: "Queen Anne's Lace",
+        Foliage: "Ruscus",
+      },
+      appreciation: { Focal: "Hydrangea", Filler: "Lavender", Foliage: "Nagi" },
+      apology: {
+        Focal: "Chrysanthemum",
+        Filler: "Baby's Breath",
+        Foliage: "Fern",
+      },
+      fun: { Focal: "Garden Rose", Filler: "Baby's Breath", Foliage: "Nagi" },
+    },
+    familyMember: {
+      valentines: {
+        Focal: "Red Rose",
+        Filler: "Queen Anne's Lace",
+        Foliage: "Ruscus",
+      },
+      easter: { Focal: "Tulip", Filler: "Lavender", Foliage: "Huckleberry" },
+      appreciation: { Focal: "Hydrangea", Filler: "Lavender", Foliage: "Nagi" },
+      apology: {
+        Focal: "Chrysanthemum",
+        Filler: "Baby's Breath",
+        Foliage: "Fern",
+      },
+      fun: { Focal: "Buttercup", Filler: "Baby's Breath", Foliage: "Nagi" },
+    },
+    friend: {
+      valentines: {
+        Focal: "Red Rose",
+        Filler: "Queen Anne's Lace",
+        Foliage: "Ruscus",
+      },
+      easter: { Focal: "Tulip", Filler: "Lavender", Foliage: "Huckleberry" },
+      appreciation: { Focal: "Hydrangea", Filler: "Lavender", Foliage: "Nagi" },
+      apology: {
+        Focal: "Chrysanthemum",
+        Filler: "Baby's Breath",
+        Foliage: "Fern",
+      },
+      fun: { Focal: "Buttercup", Filler: "Baby's Breath", Foliage: "Nagi" },
+    },
+  };
 
-    setUserPreferencesFlowers(filteredFlowers);
+  const prePopulateCart = (
+    focalName,
+    fillerName,
+    foliageName,
+    sizeMultiplier
+  ) => {
+    console.log(`Prepopulating cart with sizeMultiplier: ${sizeMultiplier}`);
+    const focalFlower = dummyData.flowers.find(
+      (flower) => flower.name === focalName && flower.type === "Focal"
+    );
+    const fillerFlower = dummyData.flowers.find(
+      (flower) => flower.name === fillerName && flower.type === "Filler"
+    );
+    const foliageFlower = dummyData.flowers.find(
+      (flower) => flower.name === foliageName && flower.type === "Foliage"
+    );
 
-    if (userPreferences.template) {
-      prePopulateCart(filteredFlowers);
-    }
-  }, [userPreferences]);
+    console.log(`Focal Flower:`, focalFlower);
+    console.log(`Filler Flower:`, fillerFlower);
+    console.log(`Foliage Flower:`, foliageFlower);
 
-  const prePopulateCart = (flowers) => {
-    const newFocalFlowers = [];
-    const newFillerFlowers = [];
-    const newFoliageFlowers = [];
-    const newContainerOptions = [];
+    // Prepare new flower arrays with the correct quantity based on the size
+    const newFocalFlowers = focalFlower
+      ? [{ ...focalFlower, quantity: 2 * sizeMultiplier }]
+      : [];
+    const newFillerFlowers = fillerFlower
+      ? [{ ...fillerFlower, quantity: 3 * sizeMultiplier }]
+      : [];
+    const newFoliageFlowers = foliageFlower
+      ? [{ ...foliageFlower, quantity: 1 * sizeMultiplier }]
+      : [];
 
-    flowers.forEach((flower) => {
-      const newFlower = { ...flower, quantity: 1 }; // Prepare the flower object with quantity
-      switch (flower.type) {
-        case "Focal":
-          newFocalFlowers.push(newFlower);
-          break;
-        case "Filler":
-          newFillerFlowers.push(newFlower);
-          break;
-        case "Foliage":
-          newFoliageFlowers.push(newFlower);
-          break;
-        case "Container":
-          newContainerOptions.push(newFlower);
-          break;
-        default:
-          console.log("Unknown flower type:", flower.type);
-      }
-    });
+    console.log("New Focal Flowers:", newFocalFlowers);
+    console.log("New Filler Flowers:", newFillerFlowers);
+    console.log("New Foliage Flowers:", newFoliageFlowers);
 
-    setFocalFlowers((focalFlowers) => [...focalFlowers, ...newFocalFlowers]);
-    setFillerFlowers((fillerFlowers) => [
-      ...fillerFlowers,
-      ...newFillerFlowers,
-    ]);
-    setFoliageFlowers((foliageFlowers) => [
-      ...foliageFlowers,
-      ...newFoliageFlowers,
-    ]);
-    setContainerOptions((containerOptions) => [
-      ...containerOptions,
-      ...newContainerOptions,
-    ]);
+    // Update the state with these new arrays
+    setFocalFlowers(newFocalFlowers);
+    setFillerFlowers(newFillerFlowers);
+    setFoliageFlowers(newFoliageFlowers);
 
+    // Call calculatePrice to update the total price
     calculatePrice();
   };
+
+  const createTemplate = (recipient, occasion, size) => {
+    console.log(
+      `Recipient: ${recipient}, Occasion: ${occasion}, Size: ${size}`
+    );
+    const sizeMultiplier = size === "Small" ? 1 : size === "Medium" ? 2 : 3;
+    console.log(`sizemultiplier:`, sizeMultiplier);
+    const template = templates[recipient]?.[occasion];
+    console.log(`Template found:`, template);
+
+    if (template) {
+      prePopulateCart(
+        template.Focal,
+        template.Filler,
+        template.Foliage,
+        sizeMultiplier
+      );
+    }
+  };
+
+  useEffect(() => {
+    if (preferredBouquetsize) {
+      setBouquetSize(preferredBouquetsize);
+    }
+  }, [preferredBouquetsize]);
+
+  useEffect(() => {
+    console.log("Template Preferences in BouquetBuilder:", templatePreferences);
+    if (templatePreferences) {
+      const { shoppingFor, occasion, size } = templatePreferences;
+      createTemplate(shoppingFor, occasion, size);
+    }
+
+    if (userPreferences) {
+      const filteredFlowers = dummyData["flowers"].filter(
+        (flower) =>
+          (userPreferences.occasion === "all" ||
+            flower.occasion.includes(userPreferences.occasion)) &&
+          (userPreferences.shoppingFor === "all" ||
+            flower.shoppingFor.includes(userPreferences.shoppingFor))
+      );
+      setUserPreferencesFlowers(filteredFlowers);
+    }
+  }, [userPreferences, templatePreferences]);
 
   const calculatePrice = () => {
     let sum = 0;
@@ -208,7 +288,13 @@ const BouquetBuilder = ({ userPreferences }) => {
   useEffect(() => {
     updateTotalQuantity();
     updateFlowerLimit();
-  }, [focalFlowers, fillerFlowers, foliageFlowers, containerOptions, bouquetSize]);
+  }, [
+    focalFlowers,
+    fillerFlowers,
+    foliageFlowers,
+    containerOptions,
+    bouquetSize,
+  ]);
 
   return (
     <div className="App">
@@ -235,7 +321,10 @@ const BouquetBuilder = ({ userPreferences }) => {
 
       {cartView ? (
         generateNoteView ? (
-          <GenerateNotePage setNote={setNotes} setGenerateNoteView={setGenerateNoteView}/>
+          <GenerateNotePage
+            setNote={setNotes}
+            setGenerateNoteView={setGenerateNoteView}
+          />
         ) : (
           <>
             <IconButton
@@ -261,13 +350,12 @@ const BouquetBuilder = ({ userPreferences }) => {
               totalPrice={totalPrice}
               notes={notes}
               setGenerateNoteView={setGenerateNoteView}
-            // selectedNote={selectedNote}
-            // setSelectedNote={setSelectedNote}
-            // customNote={customNote}
-            // setCustomNote={setCustomNote}
+              // selectedNote={selectedNote}
+              // setSelectedNote={setSelectedNote}
+              // customNote={customNote}
+              // setCustomNote={setCustomNote}
             />
           </>
-
         )
       ) : (
         <>
@@ -339,21 +427,28 @@ const BouquetBuilder = ({ userPreferences }) => {
               value="Container"
             />
           </div>
-          <h3 style={{ marginBottom: "0" }}>{`${selectedFlowerType === "Container" ? "Containers" : selectedFlowerType + " Flowers"}`}</h3>
+          <h3 style={{ marginBottom: "0" }}>{`${
+            selectedFlowerType === "Container"
+              ? "Containers"
+              : selectedFlowerType + " Flowers"
+          }`}</h3>
           <i>
-            {selectedFlowerType === "Focal" ? "Focal flowers are the heart of your bouquet." :
-              selectedFlowerType === "Filler" ? "Filler flowers add texture, volume, and balance to your bouquet." :
-                selectedFlowerType === "Foliage" && "Foliage provides a beautiful backdrop for your blooms."}
+            {selectedFlowerType === "Focal"
+              ? "Focal flowers are the heart of your bouquet."
+              : selectedFlowerType === "Filler"
+              ? "Filler flowers add texture, volume, and balance to your bouquet."
+              : selectedFlowerType === "Foliage" &&
+                "Foliage provides a beautiful backdrop for your blooms."}
           </i>
           <Cart
             list={
               selectedFlowerType === "Focal"
                 ? focalFlowers
                 : selectedFlowerType === "Filler"
-                  ? fillerFlowers
-                  : selectedFlowerType === "Foliage"
-                    ? foliageFlowers
-                    : containerOptions
+                ? fillerFlowers
+                : selectedFlowerType === "Foliage"
+                ? foliageFlowers
+                : containerOptions
             }
             updateQuantity={updateQuantity}
           />
@@ -382,7 +477,6 @@ const BouquetBuilder = ({ userPreferences }) => {
               <img src="/icons/flower.png" style={{ width: "2rem" }}></img> View
               cart
             </IconButton>
-
           </div>
 
           <FlowerShop
@@ -393,19 +487,19 @@ const BouquetBuilder = ({ userPreferences }) => {
               selectedFlowerType === "Focal"
                 ? focalFlowers
                 : selectedFlowerType === "Filler"
-                  ? fillerFlowers
-                  : selectedFlowerType === "Foliage"
-                    ? foliageFlowers
-                    : containerOptions
+                ? fillerFlowers
+                : selectedFlowerType === "Foliage"
+                ? foliageFlowers
+                : containerOptions
             }
             setTypeList={
               selectedFlowerType === "Focal"
                 ? setFocalFlowers
                 : selectedFlowerType === "Filler"
-                  ? setFillerFlowers
-                  : selectedFlowerType === "Foliage"
-                    ? setFoliageFlowers
-                    : setContainerOptions
+                ? setFillerFlowers
+                : selectedFlowerType === "Foliage"
+                ? setFoliageFlowers
+                : setContainerOptions
             }
             calculatePrice={calculatePrice}
             updateTotalQuantity={updateTotalQuantity}
