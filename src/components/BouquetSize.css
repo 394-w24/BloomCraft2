@@ -1,13 +1,4 @@
-.bouquet-size-button:hover {
-    background-color: rgb(255, 247, 0);
-}
-
 .bouquet-size-button {
-    background-color: rgb(252, 186, 3) !important;
-    color: black !important;
-}
-
-.btn-check {
     background-color: rgb(252, 186, 3) !important;
     color: black !important;
 }

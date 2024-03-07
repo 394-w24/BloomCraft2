@@ -6,7 +6,9 @@ const VisualBouquet = ({ focalList, fillerList, foliageList, bouquetSize, contai
     for (let i = 0; i < flower.quantity; i++) {
       flowerIcons.push(
         <img
-          src={`/photos/small_flowers/bouquet_flowers/${flower.photoName}`}
+          src={flower.type === "Foliage" ?
+            `/photos/small_flowers/${flower.photoName}` :
+            `/photos/small_flowers/bouquet_flowers/${flower.photoName}`}
           style={
             bouquetSize === "small" ? { top: `${Math.floor(i / 3) * 50}px` } :
               bouquetSize === "medium" ? { top: `${Math.floor(i / 3) * 40}px` } :
@@ -36,7 +38,8 @@ const VisualBouquet = ({ focalList, fillerList, foliageList, bouquetSize, contai
           className="vb-container-image"
           key={container.name}
         />
-    )}
+      )
+    }
     );
   }
 
