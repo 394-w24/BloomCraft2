@@ -316,9 +316,17 @@ const BouquetBuilder = ({
         style={{ backgroundColor: "mustard !important" }}
       >
         <Toolbar>
-          <IconButton edge="start" color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
+          <IconButton
+              edge="start"
+              color="inherit"
+              onClick={() => {cartView ? setCartView(false) : navigate("/");}}
+            >
+              <ArrowBackIcon
+                style={{
+                  scale: "1.5",
+                }}
+              />
+            </IconButton>
           <div style={{ margin: "0 auto" }}>
             <img src={logo} alt="Logo" className="App-logo" />
           </div>
@@ -340,21 +348,6 @@ const BouquetBuilder = ({
           />
         ) : (
           <>
-            <IconButton
-              color="inherit"
-              onClick={() => setCartView(false)}
-              style={{
-                left: "1.5vh",
-                top: "12vh",
-                position: "absolute",
-              }}
-            >
-              <ArrowBackIcon
-                style={{
-                  scale: "1.5",
-                }}
-              />
-            </IconButton>
             <FinalCart
               focalFlowers={focalFlowers}
               fillerFlowers={fillerFlowers}
