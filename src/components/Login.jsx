@@ -1,7 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import logo from "/icons/logo.png";
-import "./Login.css"
+import "./Login.css";
+
 
 function Login() {
     const navigate = useNavigate(); 
@@ -17,10 +18,10 @@ function Login() {
     };
 
     return (
-        <div className="login-container">
+        <div className="login-container" style={{"textAlign":"center"}}>
            <img className="login-img" src={logo} style={{ width: "8rem" }}></img>
 
-            <h2 className="login-h2">Create Joy, One Bouquet at a Time!</h2>
+            <h2 className="login-h2">Create joy, one bouquet at a time!</h2>
             <div className="proceed-as-guest">
                 <button className="login-button" onClick={handleBuildBouquet}>Build Your Own Bouquet</button>
             </div>

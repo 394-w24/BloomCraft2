@@ -82,8 +82,8 @@ const Quiz = ({
         </div>
       )}
       {questionNumber === 2 && (
-        <div>
-          What occasion are you shopping for?
+        <div className="quiz-question">
+          <p className="quiz-question-title">What occasion are you shopping for?</p>
           <div className="button-group">
             <Button onClick={() => handleOccasion("romance")}>
               Romantic Gesture
@@ -100,8 +100,8 @@ const Quiz = ({
         </div>
       )}
       {questionNumber === 3 && (
-        <div>
-          Which Holiday are you shopping for?
+        <div className="quiz-question">
+          <p className="quiz-question-title">Which Holiday are you shopping for?</p>
           <div className="button-group">
             <Button onClick={() => handleHoliday("valentines")}>
               Valentine's
@@ -112,8 +112,8 @@ const Quiz = ({
       )}
 
       {questionNumber === 4 && (
-        <div>
-          Would you like us to start you with a template?
+        <div className="quiz-question">
+          <p className="quiz-question-title">Would you like us to start you with a template?</p>
           <div className="button-group">
             <Button
               variant="contained"
@@ -134,9 +134,8 @@ const Quiz = ({
       )}
 
       {questionNumber === 5 && (
-        <div>
-          What bouquet size would you like to start with? You can change your
-          selection later.
+        <div className="quiz-question">
+          <p className="quiz-question-title">What bouquet size would you like to start with? You can change your selection later.</p>
           <div className="button-group">
             <Button onClick={() => handleSize("Small")}>
               Small (6 flowers)
