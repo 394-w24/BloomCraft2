@@ -149,6 +149,7 @@ const BouquetBuilder = ({
             "unit": "piece",
             "price": 2.00,
             "priceRange": "$",
+            "quantity": 1,
             "photoName": "wrap-brown.png",
             "occasion": ["all"],
             "shoppingFor": ["all"]
