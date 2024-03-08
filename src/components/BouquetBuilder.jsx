@@ -29,7 +29,7 @@ const BouquetBuilder = ({
   templatePreferences,
   preferredBouquetsize,
 }) => {
-  const [selectedFlowerType, setSelectedFlowerType] = useState("Focal");
+  const [selectedFlowerType, setSelectedFlowerType] = useState("Container");
   const [focalFlowers, setFocalFlowers] = useState([]);
   const [fillerFlowers, setFillerFlowers] = useState([]);
   const [foliageFlowers, setFoliageFlowers] = useState([]);
@@ -480,8 +480,7 @@ const BouquetBuilder = ({
               aria-label="cart"
               onClick={() => setCartView(!cartView)}
             >
-              <img src="/icons/flower.png" style={{ width: "2rem" }}></img> View
-              cart
+              <img src="/icons/flower.png" style={{ width: "2rem" }}></img> Add to cart
             </IconButton>
           </div>
 
