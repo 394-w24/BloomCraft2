@@ -65,7 +65,7 @@ const BouquetBuilder = ({
       },
       appreciation: { Focal: "Hydrangea", Filler: "Lavender", Foliage: "Nagi" },
       apology: {
-        Focal: "Chrysanthemum",
+        Focal: "Hydrangea",
         Filler: "Baby's Breath",
         Foliage: "Fern",
       },
@@ -144,14 +144,14 @@ const BouquetBuilder = ({
     setFillerFlowers(newFillerFlowers);
     setFoliageFlowers(newFoliageFlowers);
     setContainerOptions([{
-      "name": "White Round Vase",
-      "type": "Container",
-      "unit": "piece",
-      "price": 10,
-      "priceRange": "$$",
-      "photoName": "vase-white-round.png",
-      "occasion": ["all"],
-      "shoppingFor": ["all"]
+      "name": "Brown Wrap",
+            "type": "Container",
+            "unit": "piece",
+            "price": 2.00,
+            "priceRange": "$",
+            "photoName": "wrap-brown.png",
+            "occasion": ["all"],
+            "shoppingFor": ["all"]
   }])
 
     // Call calculatePrice to update the total price
