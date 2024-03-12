@@ -10,7 +10,6 @@ const Quiz = ({
   const [questionNumber, setQuestionNumber] = useState(1);
   const [shoppingFor, setShoppingFor] = useState("");
   const [occasion, setOccasion] = useState("");
-  // const [holiday, setHoliday] = useState("");
   const [template, setTemplate] = useState(false);
 
   const navigate = useNavigate();
@@ -30,20 +29,12 @@ const Quiz = ({
   };
 
   const handleHoliday = (value) => {
-    // setHoliday(value);
     setShoppingFor("all");
     setOccasion(value);
     setQuestionNumber(4);
   };
 
   const handleSize = (value) => {
-    console.log("handleSize called with value:", value);
-    console.log("Current values before setting templatePreferences:", {
-      shoppingFor,
-      occasion,
-      size: value,
-    });
-
     setTemplatePreferences({ shoppingFor, occasion, size: value });
     setPreferredbouquetsize(value);
     navigate("/bouquetbuilder");

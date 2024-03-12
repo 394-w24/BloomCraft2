@@ -109,7 +109,6 @@ const BouquetBuilder = ({
     foliageName,
     sizeMultiplier
   ) => {
-    console.log(`Prepopulating cart with sizeMultiplier: ${sizeMultiplier}`);
     const focalFlower = dummyData.flowers.find(
       (flower) => flower.name === focalName && flower.type === "Focal"
     );
@@ -119,10 +118,6 @@ const BouquetBuilder = ({
     const foliageFlower = dummyData.flowers.find(
       (flower) => flower.name === foliageName && flower.type === "Foliage"
     );
-
-    console.log(`Focal Flower:`, focalFlower);
-    console.log(`Filler Flower:`, fillerFlower);
-    console.log(`Foliage Flower:`, foliageFlower);
 
     // Prepare new flower arrays with the correct quantity based on the size
     const newFocalFlowers = focalFlower
@@ -134,10 +129,6 @@ const BouquetBuilder = ({
     const newFoliageFlowers = foliageFlower
       ? [{ ...foliageFlower, quantity: 1 * sizeMultiplier }]
       : [];
-
-    console.log("New Focal Flowers:", newFocalFlowers);
-    console.log("New Filler Flowers:", newFillerFlowers);
-    console.log("New Foliage Flowers:", newFoliageFlowers);
 
     // Update the state with these new arrays
     setFocalFlowers(newFocalFlowers);
@@ -162,13 +153,8 @@ const BouquetBuilder = ({
   };
 
   const createTemplate = (recipient, occasion, size) => {
-    console.log(
-      `Recipient: ${recipient}, Occasion: ${occasion}, Size: ${size}`
-    );
     const sizeMultiplier = size === "Small" ? 1 : size === "Medium" ? 2 : 3;
-    console.log(`sizemultiplier:`, sizeMultiplier);
     const template = templates[recipient]?.[occasion];
-    console.log(`Template found:`, template);
 
     if (template) {
       prePopulateCart(
@@ -187,15 +173,12 @@ const BouquetBuilder = ({
   }, [preferredBouquetsize]);
 
   useEffect(() => {
-    console.log("Template Preferences in BouquetBuilder:", templatePreferences);
     if (templatePreferences) {
-      console.log("Creating template with preferences:", templatePreferences);
       const { shoppingFor, occasion, size } = templatePreferences;
       createTemplate(shoppingFor, occasion, size);
     }
 
     if (userPreferences) {
-      console.log("User Preferences in BouquetBuilder:", userPreferences);
       const filteredFlowers = dummyData["flowers"].filter(
         (flower) =>
           (userPreferences.occasion === "all" ||
@@ -203,7 +186,6 @@ const BouquetBuilder = ({
           (userPreferences.shoppingFor === "all" ||
             flower.shoppingFor.includes(userPreferences.shoppingFor))
       );
-      console.log(filteredFlowers);
       setUserPreferencesFlowers(filteredFlowers);
     }
   }, [userPreferences, templatePreferences]);
@@ -362,10 +344,6 @@ const BouquetBuilder = ({
               totalPrice={totalPrice}
               notes={notes}
               setGenerateNoteView={setGenerateNoteView}
-              // selectedNote={selectedNote}
-              // setSelectedNote={setSelectedNote}
-              // customNote={customNote}
-              // setCustomNote={setCustomNote}
             />
           </>
         )
@@ -376,7 +354,6 @@ const BouquetBuilder = ({
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              // marginBottom: "20px",
             }}
           >
             <Typography
@@ -492,7 +469,6 @@ const BouquetBuilder = ({
           </div>
 
           <FlowerShop
-            // flowerList={dummyData["flowers"]}
             flowerList={userPreferencesFlowers}
             selectedFlowerType={selectedFlowerType}
             typeList={

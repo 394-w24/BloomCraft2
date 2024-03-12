@@ -3,8 +3,6 @@
     grid-template-columns: repeat(auto-fill, 10rem);
     justify-content: center;
     background-color: #b2d599;
-    /* grid-template-columns: repeat(3, 1fr); 
-    grid-gap: 20px;  */
 }
 
 .flower-shop-item {

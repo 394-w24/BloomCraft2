@@ -27,7 +27,6 @@ const Cart = ({ list, updateQuantity }) => {
                 style={{ cursor: "pointer", fontSize: "1rem" }}
               ></i>
             </span>
-            {/* <span>{item.price}</span> */}
           </li>
         ))}
       </ul>

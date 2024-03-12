@@ -2,7 +2,6 @@
   outline: none;
   border: none;
   border-radius: 25px;
-  /* padding: 0rem 0.5rem; */
   height: 3rem;
   width: 90%;
   max-width: 30rem;
@@ -20,6 +19,5 @@
 
 .custom-button:active {
   background-color: #45a049;
-  /* box-shadow: 0 5px #666; */
   transform: translateY(4px);
 }
