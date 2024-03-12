@@ -143,17 +143,19 @@ const BouquetBuilder = ({
     setFocalFlowers(newFocalFlowers);
     setFillerFlowers(newFillerFlowers);
     setFoliageFlowers(newFoliageFlowers);
-    setContainerOptions([{
-      "name": "Brown Wrap",
-            "type": "Container",
-            "unit": "piece",
-            "price": 2.00,
-            "priceRange": "$",
-            "quantity": 1,
-            "photoName": "wrap-brown.png",
-            "occasion": ["all"],
-            "shoppingFor": ["all"]
-  }])
+    setContainerOptions([
+      {
+        name: "Brown Wrap",
+        type: "Container",
+        unit: "piece",
+        price: 2.0,
+        priceRange: "$",
+        quantity: 1,
+        photoName: "wrap-brown.png",
+        occasion: ["all"],
+        shoppingFor: ["all"],
+      },
+    ]);
 
     // Call calculatePrice to update the total price
     calculatePrice();
@@ -187,7 +189,7 @@ const BouquetBuilder = ({
   useEffect(() => {
     console.log("Template Preferences in BouquetBuilder:", templatePreferences);
     if (templatePreferences) {
-      console.log("Creating template with preferences:", templatePreferences)
+      console.log("Creating template with preferences:", templatePreferences);
       const { shoppingFor, occasion, size } = templatePreferences;
       createTemplate(shoppingFor, occasion, size);
     }
@@ -318,20 +320,23 @@ const BouquetBuilder = ({
       >
         <Toolbar>
           <IconButton
-              edge="start"
-              color="inherit"
-              onClick={() => {cartView ? setCartView(false) : navigate("/");}}
-            >
-              <ArrowBackIcon
-                style={{
-                  scale: "1.5",
-                }}
-              />
-            </IconButton>
+            edge="start"
+            color="inherit"
+            onClick={() => {
+              cartView ? setCartView(false) : navigate("/");
+            }}
+          >
+            <ArrowBackIcon
+              style={{
+                scale: "1.5",
+              }}
+            />
+          </IconButton>
           <div style={{ margin: "0 auto" }}>
             <img src={logo} alt="Logo" className="App-logo" />
           </div>
           <IconButton
+            data-testid="cart-icon"
             color="inherit"
             aria-label="cart"
             onClick={() => setCartView(!cartView)}
@@ -481,7 +486,8 @@ const BouquetBuilder = ({
               aria-label="cart"
               onClick={() => setCartView(!cartView)}
             >
-              <img src="/icons/flower.png" style={{ width: "2rem" }}></img> Add to cart
+              <img src="/icons/flower.png" style={{ width: "2rem" }}></img> Add
+              to cart
             </IconButton>
           </div>
 

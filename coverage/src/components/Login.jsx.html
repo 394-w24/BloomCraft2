@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/components/FinalCart.jsx</title>
+    <title>Code coverage report for src/components/Login.jsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/components</a> FinalCart.jsx</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/components</a> Login.jsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">83.33% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>35/35</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">14.28% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>1/7</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
-                <span class="quiet">Functions</span>
-                <span class='fraction'>1/2</span>
+                <span class='fraction'>30/36</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">33.33% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>1/3</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">83.33% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>35/35</span>
+                <span class='fraction'>30/36</span>
             </div>
         
             
@@ -98,7 +98,25 @@
 <a name='L33'></a><a href='#L33'>33</a>
 <a name='L34'></a><a href='#L34'>34</a>
 <a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -117,57 +135,42 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState } from "react";
-import FinalCartFlowerType from "./FinalCartFlowerType";
-import NoteComponent from "./Note";
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
+import { useNavigate } from 'react-router-dom'; 
+import logo from "/icons/logo.png";
+import "./Login.css";
 &nbsp;
-const FinalCart = ({ occasion, focalFlowers, fillerFlowers, foliageFlowers, containerOptions, totalPrice, notes, setGenerateNoteView}) =&gt; {
-  const [showNoteComponent, setShowNoteComponent] = useState(notes.length &gt; <span class="branch-0 cbranch-no" title="branch not covered" >0 ? true : f</span>alse);
 &nbsp;
-  return (
-    &lt;div style={{ marginTop: "20px" }}&gt;
-      &lt;div style={{ marginTop: '10px' }}&gt;
-        {focalFlowers.length !== <span class="branch-0 cbranch-no" title="branch not covered" >0 &amp;&amp; &lt;h3&gt;Focal Flowers&lt;/h3&gt;}</span>
-        &lt;FinalCartFlowerType flowerList={focalFlowers} /&gt;
-        {fillerFlowers.length !== <span class="branch-0 cbranch-no" title="branch not covered" >0 &amp;&amp; &lt;h3&gt;Filler Flowers&lt;/h3&gt;}</span>
-        &lt;FinalCartFlowerType flowerList={fillerFlowers} /&gt;
-        {foliageFlowers.length !== <span class="branch-0 cbranch-no" title="branch not covered" >0 &amp;&amp; &lt;h3&gt;Foliage Flowers&lt;/h3&gt;}</span>
-        &lt;FinalCartFlowerType flowerList={foliageFlowers} /&gt;
-        {containerOptions.length !== <span class="branch-0 cbranch-no" title="branch not covered" >0 &amp;&amp; &lt;h3&gt;Containers&lt;/h3&gt;}</span>
-        &lt;FinalCartFlowerType flowerList={containerOptions} /&gt;
-      &lt;/div&gt;
-      &lt;div&gt;
-        &lt;b style={{ fontSize: "1.5rem" }}&gt;{`Total Price: $${totalPrice}.00`}&lt;/b&gt;
-      &lt;/div&gt;
-      &lt;div&gt;
-        &lt;button style={{ marginTop: "15px", marginBottom: "15px", background: "rgb(213, 240, 164)", border: "none", borderRadius: "20px", padding: "5px 30px"  }} onClick={<span class="fstat-no" title="function not covered" >() =&gt; setShowNoteComponent(true)}&gt;A</span>dd a Note&lt;/button&gt;
-        {<span class="branch-0 cbranch-no" title="branch not covered" >showNoteComponent &amp;&amp; &lt;NoteComponent notes={notes} setGenerateNoteView={setGenerateNoteView} /&gt;}</span>
-      &lt;/div&gt;
-      &lt;div&gt;
-      &lt;button style={{ marginBottom: "20px", background: "rgb(213, 240, 164)", border: "none", borderRadius: "20px", padding: "5px 30px", fontWeight: "550"}}
-        &gt;Complete Transaction&lt;/button&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  );
-};
+function Login() {
+    const navigate = useNavigate(); 
 &nbsp;
-export default FinalCart;
+    const handleTakeQuiz = <span class="fstat-no" title="function not covered" >() =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        // Navigate to the quiz page when "Take Our Quiz" button is clicked</span>
+<span class="cstat-no" title="statement not covered" >        navigate('/quiz');</span>
+<span class="cstat-no" title="statement not covered" >    };</span>
+&nbsp;
+    const handleBuildBouquet = <span class="fstat-no" title="function not covered" >() =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        // Navigate to the bouquet builder page when "Build Your Own Bouquet" button is clicked</span>
+<span class="cstat-no" title="statement not covered" >        navigate('/bouquetbuilder');</span>
+<span class="cstat-no" title="statement not covered" >    };</span>
+&nbsp;
+    return (
+        &lt;div className="login-container" style={{"textAlign":"center"}}&gt;
+           &lt;img className="login-img" src={logo} style={{ width: "8rem" }}&gt;&lt;/img&gt;
+&nbsp;
+            &lt;h2 className="login-h2"&gt;Create joy, one bouquet at a time!&lt;/h2&gt;
+            &lt;div className="proceed-as-guest"&gt;
+                &lt;button className="login-button" onClick={handleBuildBouquet}&gt;Build Your Own Bouquet&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;p className="quiz-text"&gt;Not sure where to start? Let us help! Take our quiz to get started.&lt;/p&gt;
+            &lt;div className="proceed-as-guest"&gt;
+                &lt;button className="login-button" onClick={handleTakeQuiz}&gt;Take Our Quiz&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    );
+}
+&nbsp;
+export default Login;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
