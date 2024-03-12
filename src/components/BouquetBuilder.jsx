@@ -1,16 +1,11 @@
 import { useState, useEffect } from "react";
 
 import { AppBar, Toolbar, Typography, IconButton } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import logo from "/icons/logo.png";
 import "./BouquetBuilder.css";
-import Container from "@mui/material/Container";
-import FlowerSelect from "./FlowerSelect";
 import BouquetSizeSelector from "./BouquetSize";
 import FlowerTypeButton from "./FlowerTypeButton";
 import "bootstrap/dist/css/bootstrap.min.css";
