@@ -18,6 +18,7 @@ const Cart = ({ list, updateQuantity }) => {
                 onClick={() => updateQuantity(index, item.quantity - 1)}
                 className="bi bi-dash-circle"
                 style={{ cursor: "pointer", fontSize: "1rem" }}
+                role="i"
               ></i>{" "}
               ({item.quantity}){" "}
               <i
