@@ -8,6 +8,7 @@ const Cart = ({ list, updateQuantity }) => {
           <li key={index}>
             <span>
               <img
+                data-testid="delete-icon"
                 onClick={() => updateQuantity(index, 0)}
                 src="/icons/trash.png"
                 style={{ cursor: "pointer", width: "1rem", height: "auto" }}
