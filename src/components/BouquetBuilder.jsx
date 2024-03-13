@@ -457,6 +457,7 @@ const BouquetBuilder = ({
               color="inherit"
               aria-label="cart"
               onClick={() => setCartView(!cartView)}
+              data-testid="add-to-cart-button"
             >
               <img src="/icons/flower.png" style={{ width: "2rem" }}></img> Add
               to cart

@@ -48,4 +48,27 @@ describe("bouquetbuilder tests", () => {
     await user.click(screen.getByRole('i', { className: 'bi bi-dash-circle' }));
     expect(screen.queryByRole('i', { className: 'bi bi-dash-circle' })).toBe(null);
   });
+
+  test("selecting the 'focal' category shows focal flowers", () => {
+    render(
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <BouquetBuilder
+                userPreferences={{ occasion: "all", shoppingFor: "all" }}
+              />
+            }
+          />
+        </Routes>
+      </BrowserRouter>
+    );
+
+    const focalButton = screen.getByTestId("Focal-button");
+    fireEvent.click(focalButton);
+
+
+    expect(screen.getByText("Focal Flowers")).toBeDefined();
+  });
 });
