@@ -33,10 +33,6 @@
     <li><a href="#about-the-project">About The Project</a></li>
     <li><a href="#getting-started">Getting Started</a></li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
 
@@ -57,7 +53,7 @@ This section lists the major frameworks/libraries used in the project.
 * [React](https://reactjs.org/) - A JavaScript library for building user interfaces.
 * [Material-UI](https://mui.com/) - React components for faster and easier web development.
 * [Bootstrap](https://getbootstrap.com/) - A front-end framework for building responsive websites.
-* [React Router DOM](https://reactrouter.com/web/guides/quick-start) - Declarative routing for React.
+* [React Router DOM](https://reactrouter.com/en/main) - Routing for React.
 * [React Icons](https://react-icons.github.io/react-icons/) - A collection of icons for React applications.
 
 
@@ -89,6 +85,43 @@ Before you begin, make sure you have the following installed:
    ```sh
    npm install
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- USAGE -->
+### Usage
+
+To use the BloomCraft2 app, follow these steps:
+
+1. **Build Your Bouquet**:
+   - Click on the "Build Your Bouquet" button to navigate directly to the bouquet builder page.
+  [![Project Screenshot](public/icons/build_boquet.png)](https://github.com/394-w24/BloomCraft2/blob/main/public/icons/build_boquet.png)
+   
+   - On the bouquet builder page, you can select different flowers and arrange them to create your personalized bouquet.
+   -  Click on the desired focal, filler, foliage flowers to add it to your bouquet.
+  
+[![Project Screenshot](public/icons/focal_filler.png)](https://github.com/394-w24/BloomCraft2/blob/main/public/icons/focal_filler.png)
+
+2. **Customize the size**:
+   - Toggle between the small, medium, and large sizes buttons.
+[![Project Screenshot](public/icons/size.png)](https://github.com/394-w24/BloomCraft2/blob/main/public/icons/size.png)
+
+3. **View Your Cart**:
+   - Click on the shopping cart icon to view your current bouquet selections.
+   - You can add or remove flowers from your cart as needed.
+[![Project Screenshot](public/icons/checkout.png](https://github.com/394-w24/BloomCraft2/blob/main/public/icons/checkout.png)  
+    
+
+4. **Generate a Note**:
+   - After finalizing your bouquet, you can generate a note to accompany your bouquet.
+[![Project Screenshot](public/icons/note.png](https://github.com/394-w24/BloomCraft2/blob/main/public/icons/note.png) 
+
+   - Have fun creating beautiful and personalized bouquets for any occasion!
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- KNOWN BUGS -->
+### Known Bugs
+
+There are currently no known bugs in the BloomCraft2 app. However, if you encounter any issues, please feel free to report them.
 
    
 
