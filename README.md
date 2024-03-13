@@ -104,13 +104,12 @@ or take our quiz, to get a custom teplate to start with:
 
 3. **View Your Cart**:
    - Click on the shopping cart icon to view your current bouquet selections.
-   - You can add or remove flowers from your cart as needed.
-    
+   - You can add or remove flowers from your cart as needed.  
 
 4. **Generate a Note**:
    - After finalizing your bouquet, you can generate a note to accompany your bouquet.
    - Have fun creating beautiful and personalized bouquets for any occasion!
-
+   [![Project Screenshot](public/icons/note.png)](https://github.com/394-w24/BloomCraft2/blob/main/public/icons/note.png)
 
 <!-- KNOWN BUGS -->
 ### Known Bugs
