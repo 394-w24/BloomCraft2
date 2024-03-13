@@ -34,7 +34,7 @@
     <a href="https://github.com/394-w24/BloomCraft2"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/394-w24/BloomCraft2">View Demo</a>
+    <a href="https://bloomcrafter-fbd57.web.app/">Deployed Website</a>
     </p>
 </div>
 
@@ -55,12 +55,13 @@
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
+          <li><a href="#deploying-to-firebase">Deploying to Firebase</a></li>
       </ul>
     </li>
+    <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
@@ -80,9 +81,9 @@ Bloomcrafter is a mobile application designed to empower users to create persona
 ### Built With
 This section lists the major frameworks/libraries used in the project.
 
-* [![React][React.js]](https://reactjs.org/) - A JavaScript library for building user interfaces.
-* [![React][React.js]](https://getbootstrap.com/) - A front-end framework for building responsive websites.
-* [![Firebase][firebase.com]](https://firebase.google.com)
+* [![React][React.js]][React-url] - A front-end framework for building responsive websites.
+* [![Bootstrap][Bootstrap.com]][Bootstrap-url] - A JavaScript library for building user interfaces.
+* [![Firebase][firebase.com]][Firebase-url]
 
 
 <!-- GETTING STARTED -->
@@ -182,3 +183,22 @@ Don't forget to give the project a star! Thanks again!
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
+<br />
+<br />
+<!-- ACKNOWLEDGMENTS -->
+## Acknowledgments
+
+* Christopher K. Riesbeck 
+* Roxanne Capron
+* Patrycja Delcourt
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- MARKDOWN LINKS & IMAGES -->
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React-url]: https://reactjs.org/
+[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
+[Bootstrap-url]: https://getbootstrap.com
+[Firebase.com]: https://img.shields.io/badge/firebase-a08021?style=for-the-badge&logo=firebase&logoColor=ffcd34
+[Firebase-url]: https://firebase.google.com/
+
