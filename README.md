@@ -135,7 +135,7 @@ or take our quiz, to get a custom teplate to start with:
 
 2. **Customize the size**:
    - Toggle between the small, medium, and large sizes buttons.
-[![Project Screenshot](public/icons/size.png)](https://github.com/394-w24/BloomCraft2/blob/main/public/icons/size.png)
+[![Project Screenshot](public/icons/focal_filler.png)](https://github.com/394-w24/BloomCraft2/blob/main/public/icons/focal_filler.png)
 
 3. **View Your Cart**:
    - Click on the shopping cart icon to view your current bouquet selections.
