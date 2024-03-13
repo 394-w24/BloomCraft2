@@ -16,8 +16,7 @@ describe("Login", () => {
     const buildBouquetButton = screen.getByText("Build Your Own Bouquet");
     fireEvent.click(buildBouquetButton);
 
-    const appBarElement = screen.getByText(/Need some help?/i);
-    //screen.getByText(/welcome/i);
+    const appBarElement = screen.getByText("Need some help?");
     expect(appBarElement).toBeDefined();
   });
 });
