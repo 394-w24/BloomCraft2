@@ -6,8 +6,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-    <a href="https://github.com/394-w24/BloomCraft2/blob/main/public/icons/logo.png">
-    <img src="public/icons/logo.png" alt="Logo" width="80" height="80">
+    <a href="https://github.com/394-w24/BloomCraft2/blob/main/public/icons/logo_2.png">
+    <img src="public/icons/logo_2.png" alt="Logo" width="80" height="80">
   </a>
   <h3 align="center">BloomCraft2</h3>
 
