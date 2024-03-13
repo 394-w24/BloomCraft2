@@ -55,7 +55,8 @@
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
-          <li><a href="#deploying-to-firebase">Deploying to Firebase</a></li>
+        <li><a href="#deploying-to-firebase">Deploying to Firebase</a></li>
+        <li><a href="#running-the-app">Running the App</a></li>       
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
@@ -120,6 +121,19 @@ This project was originally deployed to Firebase. If you would like to use Fireb
 You will probably want to use Firebase hosting services. If you wish to expand this project and include ways to add to the database within the app, you should initialize a firebase database. We recommend Realtime DB because the data is stored as a json.
 
 As you will see, most of the static data (flower images, flower details) is stored locally. Images are found in public/ and all the flower data is currently stored as a .json under “dummyData.js” under src/components. It’s important to note that the functions rendering these images rely on the local path of the flower and “photoName” field in the flower data (i.e. it will do <img src=`/photos/bouquet_flowers/{flower.photoName}` />). You would need to consider and adjust this if you plan on implementing some online storage service and/or database.
+
+### Running the App
+
+To run the app, you can use the following scripts:
+
+| Script         | Description                                         |
+| -------------- | --------------------------------------------------- |
+| npm start      | Runs the app in the development mode.               |
+| npm run dev    | Alias for `npm start`.                              |
+| npm run build  | Builds the app for production to the `dist` folder. |
+| npm run serve  | Serves the production build from the `dist` folder. |
+| npm test       | Starts a Jest-like test loop.                       |
+
 
 <!-- USAGE -->
 ### Usage
