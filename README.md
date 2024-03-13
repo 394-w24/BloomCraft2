@@ -83,7 +83,7 @@ This section lists the major frameworks/libraries used in the project.
 
 * [![React][React.js]][React-url] - A front-end framework for building responsive websites.
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url] - A JavaScript library for building user interfaces.
-* [![Firebase][firebase.com]][Firebase-url]
+* [![Firebase][firebase.com]][Firebase-url] - A platform developed by Google for creating mobile and web applications. It provides various services such as Firestore (real-time database), Authentication, Cloud Functions, Hosting, and more, to help developers build high-quality apps.
 
 
 <!-- GETTING STARTED -->
@@ -131,7 +131,7 @@ To use the BloomCraft2 app, follow these steps:
    - On the bouquet builder page, you can select different flowers and arrange them to create your personalized bouquet.
    -  Click on the desired focal, filler, foliage flowers to add it to your bouquet.
 
-or take our quiz, to get a custom teplate to start with:
+or take our quiz, to get a custom template to start with:
 [![Project Screenshot](public/icons/quiz.png)](https://github.com/394-w24/BloomCraft2/blob/main/public/icons/quiz.png)
 
 2. **Customize the size**:
