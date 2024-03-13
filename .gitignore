@@ -50,6 +50,7 @@ logs
 node_modules
 bower_components
 coverage
+coverage/src
 
 *.sublime*
 

@@ -6,7 +6,6 @@ import "./Login.css";
 
 function Login() {
     const navigate = useNavigate(); 
-
     const handleTakeQuiz = () => {
         // Navigate to the quiz page when "Take Our Quiz" button is clicked
         navigate('/quiz');
