@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">23.8% </span>
+                <span class="strong">85.71% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>5/21</span>
+                <span class='fraction'>18/21</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">14.28% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">23.8% </span>
+                <span class="strong">85.71% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>5/21</span>
+                <span class='fraction'>18/21</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -86,42 +86,42 @@
 <a name='L21'></a><a href='#L21'>21</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import Button from './Button'
 &nbsp;
-const GenerateNotePage = <span class="fstat-no" title="function not covered" >({setNote, setGenerateNoteView}) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    const handleSetNote = (note) =&gt; {</span>
+const GenerateNotePage = ({setNote, setGenerateNoteView}) =&gt; {
+    const handleSetNote = <span class="fstat-no" title="function not covered" >(note) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        setNote(note);</span>
 <span class="cstat-no" title="statement not covered" >        setGenerateNoteView(false);</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    return (</span>
-<span class="cstat-no" title="statement not covered" >        &lt;div&gt;</span>
-<span class="cstat-no" title="statement not covered" >            &lt;h1&gt;What would you like to say?&lt;/h1&gt;</span>
-<span class="cstat-no" title="statement not covered" >            &lt;Button onClick={() =&gt; handleSetNote("My love for you runs deep, and I can't help but say, 'I love you.'")}&gt;I love you&lt;/Button&gt;</span>
-<span class="cstat-no" title="statement not covered" >            &lt;Button onClick={() =&gt; handleSetNote("I deeply regret my actions, especially knowing the depth of my adoration for you.")}&gt;I'm Sorry&lt;/Button&gt;</span>
-<span class="cstat-no" title="statement not covered" >            &lt;Button onClick={() =&gt; handleSetNote("I am filled with gratitude for your unwavering support.")}&gt;Thank You&lt;/Button&gt;</span>
-<span class="cstat-no" title="statement not covered" >            &lt;Button onClick={() =&gt; handleSetNote("I hope you recover swiftly, surrounded by the love and care you deserve.")}&gt;Get Better Soon&lt;/Button&gt;</span>
-<span class="cstat-no" title="statement not covered" >            &lt;Button onClick={() =&gt; handleSetNote("Even in quiet moments, my thoughts are filled with deep caring, just thinking of you.")}&gt;I Was Thinking of You&lt;/Button&gt;</span>
-<span class="cstat-no" title="statement not covered" >        &lt;/div&gt;</span>
-<span class="cstat-no" title="statement not covered" >    )</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+&nbsp;
+    return (
+        &lt;div&gt;
+            &lt;h1&gt;What would you like to say?&lt;/h1&gt;
+            &lt;Button onClick={<span class="fstat-no" title="function not covered" >() =&gt; handleSetNote("My love for you runs deep, and I can't help but say, 'I love you.'")}&gt;I</span> love you&lt;/Button&gt;
+            &lt;Button onClick={<span class="fstat-no" title="function not covered" >() =&gt; handleSetNote("I deeply regret my actions, especially knowing the depth of my adoration for you.")}&gt;I</span>'m Sorry&lt;/Button&gt;
+            &lt;Button onClick={<span class="fstat-no" title="function not covered" >() =&gt; handleSetNote("I am filled with gratitude for your unwavering support.")}&gt;T</span>hank You&lt;/Button&gt;
+            &lt;Button onClick={<span class="fstat-no" title="function not covered" >() =&gt; handleSetNote("I hope you recover swiftly, surrounded by the love and care you deserve.")}&gt;G</span>et Better Soon&lt;/Button&gt;
+            &lt;Button onClick={<span class="fstat-no" title="function not covered" >() =&gt; handleSetNote("Even in quiet moments, my thoughts are filled with deep caring, just thinking of you.")}&gt;I</span> Was Thinking of You&lt;/Button&gt;
+        &lt;/div&gt;
+    )
+}
 &nbsp;
 export default GenerateNotePage;</pre></td></tr></table></pre>
 
@@ -130,7 +130,7 @@ export default GenerateNotePage;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-03-13T01:58:27.329Z
+                at 2024-03-13T03:20:45.592Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
