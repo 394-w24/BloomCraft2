@@ -1,32 +1,52 @@
+import { describe, it, expect } from "vitest";
 import { render, fireEvent, screen } from "@testing-library/react";
-import { BrowserRouter } from "react-router-dom"; // Import BrowserRouter
+import { BrowserRouter } from "react-router-dom";
 import BouquetBuilder from "./BouquetBuilder";
 
-describe("BouquetBuilder", () => {
-  it("clicking '+' increments the flower amount by 1", async () => {
-    const initialFlowers = [
-      { name: "Rose", quantity: 3, type: "Focal" },
-      { name: "Lily", quantity: 2, type: "Filler" },
-    ];
+const userPreferences = {
+  shoppingFor: "all",
+  occasion: "all",
+};
 
+const templatePreferences = null;
+const preferredBouquetsize = "Small";
+
+describe("Increment Flower test", () => {
+  beforeEach(() => {
     render(
       <BrowserRouter>
         <BouquetBuilder
-          userPreferences={{ occasion: "all", shoppingFor: "all" }}
-          templatePreferences={{}}
-          preferredBouquetsize="Medium"
-          initialFlowers={initialFlowers}
+          userPreferences={userPreferences}
+          templatePreferences={templatePreferences}
+          preferredBouquetsize={preferredBouquetsize}
         />
       </BrowserRouter>
     );
+  });
 
-    const fillerButton = screen.getByText("Filler");
+  describe("Image appears when clicked", () => {
+    test("A container appears when clicked", async () => {
+      const wrapButton = screen.getByText("White Wrap");
+      fireEvent.click(wrapButton);
+
+      const wrapElements = await screen.findAllByAltText("White Wrap");
+      expect(wrapElements.length).toBe(2);
+    });
+  });
+
+describe("BouquetBuilder", () => {
+  it("clicking '+' increments the flower amount by 1", () => {
+    const fillerButton = screen.getByTestId("Filler-button");
     fireEvent.click(fillerButton);
 
-    const incrementButton = screen.getByTestId('increment-Lily');
+    const element = screen.getByText("Daisy");
+    fireEvent.click(element);
+
+    const incrementButton = screen.getByTestId("increment-Daisy");
     fireEvent.click(incrementButton);
 
-    const lilyQuantity = screen.getByTestId('Lily-quantity');
-    expect(lilyQuantity).toHaveTextContent('3'); 
+    const daisyQuantity = screen.getByTestId("quantity-Daisy");
+    expect(daisyQuantity.textContent).toBe('2');
   });
+});
 });

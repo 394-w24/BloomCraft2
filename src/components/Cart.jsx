@@ -20,10 +20,11 @@ const Cart = ({ list, updateQuantity }) => {
                 style={{ cursor: "pointer", fontSize: "1rem" }}
                 role="i"
               ></i>{" "}
-              ({item.quantity}){" "}
+              <span data-testid={`quantity-${item.name}`}>{item.quantity}</span>{" "}
               <i
                 onClick={() => updateQuantity(index, item.quantity + 1)}
                 className="bi bi-plus-circle"
+                data-testid={`increment-${item.name}`}
                 style={{ cursor: "pointer", fontSize: "1rem" }}
               ></i>
             </span>
